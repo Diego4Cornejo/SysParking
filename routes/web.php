@@ -11,6 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('prueba');
+Route::get('/', "PagesController@inicio");
+Route::get('ingreso', "PagesController@ingreso");
+Route::get('inicio', "PagesController@inicio");
+Route::get('graficos', "PagesController@graficos");
+Route::get('reportes', "PagesController@reportes");
+Route::get('consulta', "PagesController@consulta");
+Route::get('registrarabonado', "PagesController@registrarabonado");
+Route::get('listadeabonados', "PagesController@listadeabonados");
+Route::get('pagodeabonados', "PagesController@pagodeabonados");
+Route::get('operadores', "PagesController@operadores");
+Route::get('caja', "PagesController@caja");
+Route::get('home', function () {
+    return view('Layouts.home');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
