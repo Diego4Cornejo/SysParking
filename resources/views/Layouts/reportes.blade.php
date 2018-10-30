@@ -24,3 +24,6 @@
 </div>
 <!-- /.row -->
 @endsection
+@section('title')
+    SysParking - Reportes
+@endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tarifa;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -10,7 +11,8 @@ class PagesController extends Controller
         return view('Layouts.inicio');
     }
     public function ingreso(){
-        return view('Layouts.ingreso');
+        $tarifas = tarifa::all();
+        return view('Layouts.ingreso',['tarifas' => $tarifas]);
     }
     public function graficos(){
         return view('Layouts.graficos');

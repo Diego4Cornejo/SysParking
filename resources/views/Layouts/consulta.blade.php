@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h3 class="page-header">Reportes</h3>
+        <h3 class="page-header"> Consulta </h3>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -23,4 +23,7 @@
     <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
+@endsection
+@section('title')
+    SysParking - Consulta
 @endsection
