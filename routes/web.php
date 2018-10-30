@@ -25,6 +25,8 @@ Route::get('caja', "PagesController@caja");
 Route::get('home', function () {
     return view('Layouts.home');
 });
+Route::resource('ingreso',"EstacionadosController");
+Route::post('ingreso/register', array('ingresos'=>'EstacionadosController@create'));
 
 Auth::routes();
 

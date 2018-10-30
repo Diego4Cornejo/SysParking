@@ -17,17 +17,17 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6"> 
-                    <form role="form" action="{{url('ingreso/create')}}">
+                            <form role="form">
                                     <div class="form-group">
                                         <label>Patente del Vehiculo</label>
-                                        <input class="form-control" name="EST_PATENTE" placeholder="Ingrese Patente EJ: VXDJ02 o vxdj02">
+                                        <input class="form-control" placeholder="Ingrese Patente EJ: VXDJ02 o vxdj02">
                                     </div>
                                     <div class="form-group">
                                             <label>Tipo de Atención</label>
                                             <select class="form-control">
                                                 <option>Seleccionar...</option>
                                                 @forelse ($tarifas as $tarifa)
-                                                    <option name="EST_TIPODEATENCION">{{ $tarifa -> TARIFAS_TIPODEATENCION }}</option>
+                                                    <option>{{ $tarifa -> TARIFAS_TIPODEATENCION }}</option>
                                                 @empty
         
                                                 @endforelse

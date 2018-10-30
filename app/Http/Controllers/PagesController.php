@@ -8,11 +8,7 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function inicio(){
-        return view('Layouts.inicio');
-    }
-    public function ingreso(){
-        $tarifas = tarifa::all();
-        return view('Layouts.ingreso',['tarifas' => $tarifas]);
+        return view('Layouts.ingreso');
     }
     public function graficos(){
         return view('Layouts.graficos');
