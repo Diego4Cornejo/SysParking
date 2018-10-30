@@ -269,23 +269,24 @@
                         <li>
                             <a href="{{ url('inicio') }}"><i class="fa fa-home fa-fw"></i> Inicio</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Graficos y Reportes<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                <a href="{{ url('graficos') }}">Graficos</a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('reportes') }}">Reportes</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+
                             <li>
                                 <a href="{{ url('ingreso') }}"><i class="fa fa-automobile fa-fw"></i> Ingreso de Vehiculos </a>
                             </li>
                             <li>
                                 <a href="{{ url('consulta') }}"><i class="fa fa-qrcode fa-fw"></i> Consulta de Vehiculos </a>
+                            </li>
+                            <li>
+                                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Graficos y Reportes<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                        <a href="{{ url('graficos') }}">Graficos</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('reportes') }}">Reportes</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-second-level -->
                             </li>
                         <li>
                             <a href="#"><i class="fa fa-user-md fa-fw"></i> Gestión de Abonados <span class="fa arrow"></span></a>
@@ -303,7 +304,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{{ url('operadores') }}"><i class="fa fa-group fa-fw"></i> Operadores </a>
+                            <a href="{{ url('operadores') }}"><i class="fa fa-wrench fa-fw"></i> Operadores </a>
                         </li>
                         <li>
                             <a href="{{ url('caja') }}"><i class="fa fa-dollar fa-fw"></i> Caja </a>
