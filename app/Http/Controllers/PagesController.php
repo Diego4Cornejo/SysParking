@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function inicio(){
-        return view('Layouts.ingreso');
+        return view('Layouts.inicio');
     }
     public function graficos(){
         return view('Layouts.graficos');
