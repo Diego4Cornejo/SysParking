@@ -11,8 +11,9 @@
 |
 */
 
-//Route::get('/', "PagesController@inicio");
+//Route::get('/', "");
 Route::get('ingreso', "PagesController@ingreso");
+
 //Route::get('inicio', "PagesController@inicio");
 Route::get('graficos', "PagesController@graficos");
 Route::get('reportes', "PagesController@reportes");
