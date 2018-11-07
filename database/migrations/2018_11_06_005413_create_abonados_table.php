@@ -19,7 +19,6 @@ class CreateAbonadosTable extends Migration
             $table->unsignedInteger("PLAN_ID");
             $table->string("AB_PATENTE");
             $table->string("AB_RUN");
-            $table->string("AB_PATENTE");
             $table->string("AB_NOMBRE");
             $table->date("AB_FECHADENACIMIENTO");
             $table->string("AB_SEXO");

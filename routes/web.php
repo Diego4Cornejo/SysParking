@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', "PagesController@inicio");
+//Route::get('/', "PagesController@inicio");
 Route::get('ingreso', "PagesController@ingreso");
-Route::get('inicio', "PagesController@inicio");
+//Route::get('inicio', "PagesController@inicio");
 Route::get('graficos', "PagesController@graficos");
 Route::get('reportes', "PagesController@reportes");
 Route::get('consulta', "PagesController@consulta");
@@ -26,6 +26,8 @@ Route::get('home', function () {
     return view('Layouts.home');
 });
 Route::resource('ingreso',"EstacionadosController");
+Route::resource('inicio',"InicioController");
+
 Route::post('ingreso/register', array('ingresos'=>'EstacionadosController@create'));
 
 Auth::routes();

@@ -12,7 +12,6 @@ class Estacionado extends Model
     protected $fillable =[
         'EST_TIPODEATENCION',
         'EST_PATENTE',
-        'EST_ESTADO',
         'EST_INGRESO',
         'EST_SALIDA',
         'COBRO'

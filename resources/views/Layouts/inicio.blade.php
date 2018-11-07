@@ -24,7 +24,11 @@
                                                 <i class="fa fa-automobile fa-5x"></i>
                                             </div>
                                             <div class="col-xs-9 text-right">
-                                                <div class="huge">54</div>
+                                                @forelse ($estacionados as $estacionado)
+                                                <div class="huge">{{ $estacionado -> estacionados }}</div>
+                                                @empty
+        
+                                                @endforelse
                                                 <div>Vehiculos estacionados</div>
                                             </div>
                                         </div>
@@ -46,7 +50,11 @@
                                                 <i class="fa fa-group fa-5x"></i>
                                             </div>
                                             <div class="col-xs-9 text-right">
-                                                <div class="huge">12</div>
+                                                    @forelse ($abonados as $abonado)
+                                                    <div class="huge">{{ $abonado -> abonados }}</div>
+                                                    @empty
+            
+                                                    @endforelse
                                                 <div>Abonados registrados</div>
                                             </div>
                                         </div>
@@ -68,7 +76,10 @@
                                                 <i class="fa fa-wrench fa-5x"></i>
                                             </div>
                                             <div class="col-xs-9 text-right">
-                                                <div class="huge">4</div>
+                                                    @forelse ($operadores as $operador)
+                                                    <div class="huge">{{ $operador -> operadores }}</div>
+                                                    @empty
+                                                    @endforelse
                                                 <div>Operadores Registrados</div>
                                             </div>
                                         </div>
@@ -90,7 +101,7 @@
                                                 <i class="fa fa-bell fa-5x"></i>
                                             </div>
                                             <div class="col-xs-9 text-right">
-                                                <div class="huge">3</div>
+                                                <div class="huge">0</div>
                                                 <div>Alertas</div>
                                             </div>
                                         </div>
@@ -104,6 +115,17 @@
                                     </a>
                                 </div>
                             </div>
+                        </div>
+                        <div class="jumbotron jumbotron-fluid">
+                                <div class="container">
+                                  <h3 class="display-4">Bienvenido : <i class="fa fa-user fa-fw"></i> TeamSysParking</h3>
+                                  <p class="lead">Como <i class="fa fa-wrench fa-fw"></i> Supervisor tienes acceso a los siguientes modulos:</p>
+                                  <ul class="list-group">
+                                        <li class="list-group-item">Ingreso de Vehiculos</li>
+                                        <li class="list-group-item">Consulta de Vehiculos</li>
+                                        <li class="list-group-item">Graficos y Reportes</li>
+                                    </ul>
+                                </div>
                         </div>
             </div>
             <!-- /.panel-body -->
