@@ -251,6 +251,38 @@ table.dataTable thead .sorting:after {
 .panel-green > a:hover {
   color: #3d8b3d;
 }
+.panel-perso {
+  border-color: #037F7E;
+}
+.panel-perso > .panel-heading {
+  border-color: #037F7E;
+  color: white;
+  background-color: #037F7E;
+}
+.panel-perso > a {
+  color: #037F7E;
+}
+.panel-perso > a:hover {
+  color: #02403F;
+}
+.panel-perso2 > a:hover {
+  color: #BF5F2A;
+}
+.panel-perso2 {
+  border-color: #BF5F2A;
+}
+.panel-perso2 > .panel-heading {
+  border-color: #BF5F2A;
+  color: white;
+  background-color: #BF5F2A;
+}
+.panel-perso2 > a {
+  color: #BF5F2A;
+}
+.panel-perso2 > a:hover {
+  color: #7F4B0D;
+}
+
 .panel-red {
   border-color: #d9534f;
 }
@@ -264,6 +296,23 @@ table.dataTable thead .sorting:after {
 }
 .panel-red > a:hover {
   color: #b52b27;
+}
+.panel-perso3 > a:hover {
+  color: #7F1610;
+}
+.panel-perso3 {
+  border-color: #7F1610;
+}
+.panel-perso3 > .panel-heading {
+  border-color: #7F1610;
+  color: white;
+  background-color: #7F1610;
+}
+.panel-perso3 > a {
+  color: #7F1610;
+}
+.panel-perso3 > a:hover {
+  color: #400505;
 }
 .panel-yellow {
   border-color: #f0ad4e;

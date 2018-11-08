@@ -276,14 +276,11 @@
                             <li>
                                 <a href="{{ url('consulta') }}"><i class="fa fa-qrcode fa-fw"></i> Consulta de Vehiculos </a>
                             </li>
-                            <li>
-                                <a href="{{ url('graficos') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Graficos y Reportes </a>
-                            </li>
                         <li>
                             <a href="#"><i class="fa fa-user-md fa-fw"></i> Gestión de Abonados <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('registrarabonado') }}">Registrar Abonado</a>
+                                    <a href="{{ url('abonados') }}">Registrar Abonado</a>
                                 </li>
                                 <li>
                                     <a href="{{ url('listadeabonados') }}">Lista de Abonados</a>
@@ -296,6 +293,9 @@
                         </li>
                         <li>
                             <a href="{{ url('operadores') }}"><i class="fa fa-wrench fa-fw"></i> Operadores </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('graficos') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Graficos y Reportes </a>
                         </li>
                         <li>
                             <a href="{{ url('caja') }}"><i class="fa fa-dollar fa-fw"></i> Caja </a>

@@ -11,7 +11,7 @@
 |
 */
 
-//Route::get('/', "");
+Route::resource('/', "HomeController@index");
 Route::get('ingreso', "PagesController@ingreso");
 
 //Route::get('inicio', "PagesController@inicio");
@@ -28,8 +28,8 @@ Route::get('home', function () {
 });
 Route::resource('ingreso',"EstacionadosController");
 Route::resource('inicio',"InicioController");
+Route::resource('abonados',"AbonadosController");
 
-Route::post('ingreso/register', array('ingresos'=>'EstacionadosController@create'));
 
 Auth::routes();
 

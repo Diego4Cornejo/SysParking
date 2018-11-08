@@ -7,6 +7,7 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
+<!-- -->
 <!-- /.row -->
 <div class="row">
     <div class="col-lg-12">
@@ -17,7 +18,8 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6"> 
-                            <form role="form" action="{{url('ingreso/create')}}">
+                            <!--<form role="form" method="POST" action="url('ingreso/create')">-->
+                                {!!Form::open(['route' => 'ingreso.store','method' => 'POST'])!!}
                                 <div class="form-group text-center">
                                 <label>Ingreso  :   </label>
                                 <label class="radio-inline">
@@ -47,7 +49,8 @@
                                 <button type="submit" class="btn btn-primary">Generar Boucher</button>
                                 <button type="reset" class="btn btn-primary">Limpiar Campos</button>
                                 </div>
-                            </form>   
+                            {!!Form::close([''])!!}
+                           
                     </div>
                     <br>
                     <div class="col-md-6"> <div class="table-responsive">

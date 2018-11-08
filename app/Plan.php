@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plan extends Model
 {
-    protected $table = "plans";
-    protected $fillable =[
+    protected $table = "planes";
+    /*protected $fillable =[
         'PLAN_NOMBRE',
         'PLAN_PRECIO',
         'PLAN_CARACTERISTICAS',
@@ -15,5 +15,5 @@ class Plan extends Model
     ]
     protected $guarded = ["ID_PLAN"];
     protected $primaryKey = "ID_PLAN";
-    protected $dates = ['PLAN_FECHADEPAGO' => 'Y-m-d'];
+    protected $dates = ['PLAN_FECHADEPAGO' => 'Y-m-d'];*/
 }
