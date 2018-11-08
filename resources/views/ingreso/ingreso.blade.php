@@ -21,23 +21,23 @@
                                 <div class="form-group text-center">
                                 <label>Ingreso  :   </label>
                                 <label class="radio-inline">
-                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Abonado
+                                <input type="radio" name="OPCIONES" id="OPCIONES1" value="option1" checked>Cliente Normal
                                 </label>
                                 <label class="radio-inline">
-                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">Cliente Normal
+                                <input type="radio" name="OPCIONES" id="OPCIONES2" value="option2">Abonado
                                 </label>
                                 <label class="radio-inline">
                                 </div>
                                 <div class="form-group">
                                     <label>Patente del Vehiculo</label>
-                                    <input class="form-control" name="EST_PATENTE" placeholder="Ingrese Patente EJ: VXDJ02 o vxdj02">
+                                    <input class="form-control" name="EST_PATENTE" maxlength="6" autocomplete="off"  placeholder="Ingrese Patente EJ: VXDJ02 o vxdj02">
                                 </div>
                                 <div class="form-group">
                                         <label>Tipo de Atención</label>
-                                        <select class="form-control">
+                                        <select name="idtarifa" id="idtarifa" type="text" class="form-control">
                                             <option>Seleccionar...</option>
                                             @forelse ($tarifas as $tarifa)
-                                                <option name="EST_TIPODEATENCION">{{ $tarifa -> TARIFAS_TIPODEATENCION }}</option>
+                                                <option value="{{$tarifa -> ID_TARIFA}}"name="EST_TIPODEATENCION">{{ $tarifa -> TARIFAS_TIPODEATENCION }}</option>
                                             @empty
             
                                             @endforelse

@@ -277,16 +277,7 @@
                                 <a href="{{ url('consulta') }}"><i class="fa fa-qrcode fa-fw"></i> Consulta de Vehiculos </a>
                             </li>
                             <li>
-                                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Graficos y Reportes<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                        <a href="{{ url('graficos') }}">Graficos</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ url('reportes') }}">Reportes</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-second-level -->
+                                <a href="{{ url('graficos') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Graficos y Reportes </a>
                             </li>
                         <li>
                             <a href="#"><i class="fa fa-user-md fa-fw"></i> Gestión de Abonados <span class="fa arrow"></span></a>

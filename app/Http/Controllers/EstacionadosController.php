@@ -17,14 +17,17 @@ class EstacionadosController extends Controller
     public function index()
     {
         $tarifas = tarifa::all();
+        //dd($tarifas);
         return view('ingreso.ingreso',compact('tarifas'));
     }
 
     public function create(Request $request)
     {
-        $name = $request->input('EST_PATENTE');
+        $patente = $request->input('EST_PATENTE');
+        $fktarifa = $request->get('idtarifa');
+        $option = $request->get('OPCIONES');
         DB::table('estacionados')->insert(
-            ['EST_PATENTE' => $name, 'ID_TARIFA' => 1, 'EST_CODIGOBOUCHER' => 1, 'ID_USUARIOINGRESO' => 1, 'ID_ESTADO' => 1, 'EST_INGRESO' => date("Y-m-d H:i:s")]
+            ['EST_PATENTE' => strtoupper($patente), 'ID_TARIFA' => $fktarifa, 'EST_CODIGOBOUCHER' => 1, 'ID_USUARIOINGRESO' => 1, 'ID_ESTADO' => 1, 'EST_INGRESO' => date("Y-m-d H:i:s")]
             
         );
     }
