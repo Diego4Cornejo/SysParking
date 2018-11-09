@@ -314,6 +314,7 @@ table.dataTable thead .sorting:after {
 .panel-perso3 > a:hover {
   color: #400505;
 }
+
 .panel-yellow {
   border-color: #f0ad4e;
 }
@@ -327,6 +328,21 @@ table.dataTable thead .sorting:after {
 }
 .panel-yellow > a:hover {
   color: #df8a13;
+}
+
+.panel-perso4 {
+  border-color: #344BBF;
+}
+.panel-perso4 > .panel-heading {
+  border-color: #344BBF;
+  color: white;
+  background-color: #344BBF;
+}
+.panel-perso4 > a {
+  color: #344BBF;
+}
+.panel-perso4 > a:hover {
+  color: #23327F;
 }
 .timeline {
   position: relative;

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h3 class="page-header"> Inicio </h3>
+        <h1 class="page-header"> Inicio </h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -12,12 +12,12 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Panel
+                    <i class="fa  fa-home  fa-fw"></i> Panel
             </div>
             <div class="panel-body">
                     <div class="row">
                             <div class="col-lg-3 col-md-6">
-                                <div class="panel panel-primary">
+                                <div class="panel panel-perso4">
                                     <div class="panel-heading">
                                         <div class="row">
                                             <div class="col-xs-3">
@@ -124,6 +124,8 @@
                                         <li class="list-group-item">Ingreso de Vehiculos</li>
                                         <li class="list-group-item">Consulta de Vehiculos</li>
                                         <li class="list-group-item">Graficos y Reportes</li>
+                                        <li class="list-group-item">Gestion de Abonados</li>
+                                        <li class="list-group-item">Gestion de Operadores</li>
                                     </ul>
                                 </div>
                         </div>

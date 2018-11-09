@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h3 class="page-header"> Consulta de Vehiculos </h3>
+        <h1 class="page-header"> Consulta de Vehiculos </h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -19,8 +19,8 @@
                     <div class="col-md-6 col-md-offset-3"> 
                             <form role="form" action="{{}}">
                                 <div class="form-group">
-                                    <label>Patente del Vehiculo</label>
-                                    <input class="form-control" name="CON_PATENTE" maxlength="6" autocomplete="off"  placeholder="Ingrese Patente EJ: VXDJ02 o vxdj02">
+                                    <h4><label>Patente del Vehiculo</label></h4>
+                                    <input class="form-control input-lg" name="CON_PATENTE" maxlength="6" autocomplete="off"  placeholder="Ingrese Patente EJ: VXDJ02 o vxdj02">
                                 </div>
                                 <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Realizar Consulta</button>

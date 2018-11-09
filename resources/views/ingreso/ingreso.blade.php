@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h3 class="page-header"> Ingreso de Vehiculos </h3>
+        <h1 class="page-header"> Ingreso de Vehiculos </h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -21,22 +21,22 @@
                             <!--<form role="form" method="POST" action="url('ingreso/create')">-->
                                 {!!Form::open(['route' => 'ingreso.store','method' => 'POST'])!!}
                                 <div class="form-group text-center">
-                                <label>Ingreso  :   </label>
-                                <label class="radio-inline">
+                                <!--<label>Ingreso  :     </label>-->
+                                <label class="radio-inline input-lg">
                                 <input type="radio" name="OPCIONES" id="OPCIONES1" value="option1" checked>Cliente Normal
                                 </label>
-                                <label class="radio-inline">
+                                <label class="radio-inline input-lg">
                                 <input type="radio" name="OPCIONES" id="OPCIONES2" value="option2">Abonado
                                 </label>
                                 <label class="radio-inline">
                                 </div>
                                 <div class="form-group">
-                                    <label>Patente del Vehiculo</label>
-                                    <input class="form-control" name="EST_PATENTE" maxlength="6" autocomplete="off"  placeholder="Ingrese Patente EJ: VXDJ02 o vxdj02">
+                                    <h4><label class="">Patente del Vehiculo</label></h4>
+                                    <input class="form-control input-lg" name="EST_PATENTE" maxlength="6" autocomplete="off"  placeholder="Ejemplo: VXDJ02 o vxdj02">
                                 </div>
                                 <div class="form-group">
-                                        <label>Tipo de Atención</label>
-                                        <select name="idtarifa" id="idtarifa" type="text" class="form-control">
+                                        <h4><label>Tipo de Atención</label></h4>
+                                        <select name="idtarifa" id="idtarifa" type="text" class="form-control input-lg">
                                             <option>Seleccionar...</option>
                                             @forelse ($tarifas as $tarifa)
                                                 <option value="{{$tarifa -> ID_TARIFA}}"name="EST_TIPODEATENCION">{{ $tarifa -> TARIFAS_TIPODEATENCION }}</option>
@@ -46,8 +46,8 @@
                                         </select>
                                     </div>
                                 <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Generar Boucher</button>
-                                <button type="reset" class="btn btn-primary">Limpiar Campos</button>
+                                <button type="submit" class="btn btn-primary btn-lg">Generar Boucher</button>
+                                <button type="reset" class="btn btn-primary btn-lg">Limpiar Campos</button>
                                 </div>
                             {!!Form::close([''])!!}
                            

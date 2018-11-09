@@ -15,6 +15,7 @@
                 Formulario de registro de ingreso de vehiculos
             </div>
             <div class="panel-body">
+                
             </div>
             <!-- /.panel-body -->
         </div>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h3 class="page-header">Registro de Abonados</h3>
+        <h1 class="page-header">Registro de Abonados</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -16,43 +16,44 @@
             </div>
             <div class="panel-body">
                     <div class="col-md-6"> 
-                    <form role="form" action={{url('abonado/registrar')}}>
+                    <!--<form role="form" action={//{url('abonado/registrar')}}> -->
+                        {!!Form::open(['route' => 'abonados.store','method' => 'POST'])!!}
                             <br>
                             <div class="form-group">
                                 <label>Nombre Completo :</label>
-                                <input class="form-control" placeholder="Nombre Completo">
+                                <input class="form-control" name="AB_NOMBRE" placeholder="Nombre Completo">
                             </div>
                             <div class="form-group">
                                     <label>Rut :</label>
-                                    <input class="form-control" placeholder="19604399-4">
+                                    <input class="form-control" name="AB_RUT" placeholder="19604399-4">
                             </div>
                             <div class="form-group">
                                     <label>Sexo :</label>
-                                    <select class="form-control">
-                                        <option>Seleccionar..</option>
-                                        <option>Masculino</option>
-                                        <option>Femenino</option>
-                                        <option>Otro</option>
+                                    <select name="AB_SEXO" id="AB_SEXO" type="text" class="form-control">
+                                        <option value="0">Seleccionar..</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                        <option value="Otro">Otro</option>
                                     </select>
                             </div>
                             <div class="form-group">
                                     <label>Correo Electronico :</label>
-                                    <input class="form-control" placeholder="">
+                                    <input name="AB_CORREO" class="form-control" placeholder="@">
                             </div>
                             <div class="form-group">
                                     <label>Numero Telefonico :</label>
-                                    <input class="form-control" placeholder="">
+                                    <input name="AB_NUMERO" class="form-control" placeholder="+56">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <br>
                             <div class="form-group">
                                     <label>Patente del Vehiculo :</label>
-                                    <input class="form-control" name="EST_PATENTE" maxlength="6" autocomplete="off"  placeholder="Ingrese Patente EJ: VXDJ02 o vxdj02">
+                                    <input class="form-control" name="AB_PATENTE" maxlength="6" autocomplete="off"  placeholder="Ingrese Patente EJ: VXDJ02 o vxdj02">
                             </div>
                             <div class="form-group">
                                     <label>Tipo de Plan :</label>
-                                    <select name="idtarifa" id="idtarifa" type="text" class="form-control">
+                                    <select name="idplan" id="idplan" type="text" class="form-control">
                                         <option>Seleccionar...</option>
                                         @forelse ($planes as $plan)
                                             <option value="{{$plan -> ID_PLAN}}"name="EST_TIPODEATENCION">{{ $plan -> PLAN_NOMBRE }}  ${{ $plan -> PLAN_PRECIO }} </option>
@@ -60,13 +61,26 @@
         
                                         @endforelse
                                     </select>
-                                </div>
-                            <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Registrar Abonado</button>
-                            <button type="reset" class="btn btn-primary">Limpiar Campos</button>
+                                    
                             </div>
-                        </form>
+                            <fieldset disabled>
+                                    <div class="form-group">
+                                        <label for="disabledSelect">Precio:</label>
+                                        <input class="form-control" id="disabledInput" type="text" placeholder="" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                            <label>Text area</label>
+                                            <textarea class="form-control" rows="4"></textarea>
+                                    </div>
+                                </fieldset>
+                        
                     </div>
+                    <br>
+                    <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Registrar Abonado</button>
+                            <button type="reset" class="btn btn-primary btn-lg">Limpiar Campos</button>
+                            </div>
+                    {!!Form::close([''])!!}
             </div>
             <!-- /.panel-body -->
 
