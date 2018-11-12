@@ -9,6 +9,8 @@
 </div>
 <!-- -->
 <!-- /.row -->
+<!-- Mensaje-->
+<!-- -->
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -16,6 +18,7 @@
                 Formulario de registro de ingreso de vehiculos
             </div>
             <div class="panel-body">
+
                 <div class="row">
                     <div class="col-md-6"> 
                             <!--<form role="form" method="POST" action="url('ingreso/create')">-->
@@ -50,7 +53,14 @@
                                 <button type="reset" class="btn btn-primary btn-lg">Limpiar Campos</button>
                                 </div>
                             {!!Form::close([''])!!}
-                           
+                                <!-- Mensaje-->
+                                <br>
+                            @if(Session::has('mensaje'))
+                              <div class="alert alert-success" role="alert">
+                              {{Session::get('mensaje')}}
+                             </div>
+                            @endif
+<!-- -->
                     </div>
                     <br>
                     <div class="col-md-6"> <div class="table-responsive">

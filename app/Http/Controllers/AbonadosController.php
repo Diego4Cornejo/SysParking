@@ -52,7 +52,7 @@ class AbonadosController extends Controller
             'AB_FECHADENACIMIENTO' => date("Y-m-d H:i:s"),
             'AB_ESTADO' => 'Registrado'
         ]);
-        Session::flash('mensaje','Vehiculo Registrado Correctamente');
+        Session::flash('mensaje','Abonado Registrado Correctamente');
         return redirect('/abonados');
     }
 

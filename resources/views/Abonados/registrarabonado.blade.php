@@ -81,6 +81,13 @@
                             <button type="reset" class="btn btn-primary btn-lg">Limpiar Campos</button>
                             </div>
                     {!!Form::close([''])!!}
+                    <br>
+
+                    @if(Session::has('mensaje'))
+                    <div class="alert alert-success" role="alert">
+                    {{Session::get('mensaje')}}
+                   </div>
+                  @endif
             </div>
             <!-- /.panel-body -->
 
