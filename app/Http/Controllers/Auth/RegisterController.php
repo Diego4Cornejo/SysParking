@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\cargo;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,17 +29,23 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+    public function showRegistrationForm()
+    {
+        $cargos = cargo::all();
+        return view('auth.register',compact('cargos'));
+    }
     public function __construct()
     {
         $this->middleware('guest');
     }
+
 
     /**
      * Get a validator for an incoming registration request.
@@ -67,6 +74,10 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'US_APELLIDO' => $data['US_APELLIDO'],
+            'US_RUT' => $data['US_RUT'],
+            'US_TELEFONO' => $data['US_TELEFONO'],
+            'ID_CARGO' => $data['ID_CARGO']
         ]);
     }
 }

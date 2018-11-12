@@ -11,7 +11,7 @@
 |
 */
 
-Route::resource('/', "HomeController@index");
+Route::resource('/', "HomeController");
 Route::get('ingreso', "PagesController@ingreso");
 
 //Route::get('inicio', "PagesController@inicio");
@@ -23,7 +23,7 @@ Route::get('pagodeabonados', "PagesController@pagodeabonados");
 Route::get('operadores', "PagesController@operadores");
 Route::get('caja', "PagesController@caja");
 Route::get('home', function () {
-    return view('Layouts.home');
+    return view('Layouts.app');
 });
 
 Route::resource('ingreso',"EstacionadosController");
@@ -53,5 +53,5 @@ Route::get('email/verify', 'Auth\VerificationController@show')->name('verificati
 Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 

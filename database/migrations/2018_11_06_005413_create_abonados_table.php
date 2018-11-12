@@ -23,7 +23,7 @@ class CreateAbonadosTable extends Migration
             $table->date("AB_FECHADENACIMIENTO");
             $table->string("AB_SEXO");
             $table->string("AB_CORREO");
-            $table->integer("AB_NUMERODETELEFONO");
+            $table->string("AB_NUMERODETELEFONO");
             $table->string("AB_ESTADO");
             $table->timestamps(); 
             $table->foreign('PLAN_ID')->references('ID_PLAN')->on('planes');

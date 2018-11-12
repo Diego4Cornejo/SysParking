@@ -1,4 +1,4 @@
-@extends('navbar')
+@extends('Layouts.app')
 
 @section('content')
 <div class="row">

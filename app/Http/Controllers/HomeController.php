@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Estacionado;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $estacionados = DB::table('estacionados')
+        ->select(DB::raw('count(*) as estacionados'))
+        ->where('ID_ESTADO', '=', 1)
+        ->get();
+
+        $abonados = DB::table('abonados')
+        ->select(DB::raw('count(*) as abonados'))
+        ->get();
+
+        $operadores = DB::table('users')
+        ->select(DB::raw('count(*) as operadores'))
+        ->get();
+
+        /** dd($estacionados -> estacionados); */
+        // return view('Layouts.inicio');
+        return view('/home' ,compact('estacionados','operadores','abonados'));
     }
 }
