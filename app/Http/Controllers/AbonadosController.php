@@ -76,8 +76,9 @@ class AbonadosController extends Controller
     public function edit($id)
     {
         //
-        $abonado= Abonado::find($id);
-        dd($abonado);
+        $datoabonado= Abonado::find($id);
+        $planes = Plan::all();
+        return view('Abonados.editarabonado',compact('datoabonado','planes','id'));
     }
 
     /**
@@ -90,6 +91,17 @@ class AbonadosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $abonado= Abonado::find($id);
+        $abonado->AB_NOMBRE=$request->get('AB_NOMBRE');
+        $abonado->AB_RUN=$request->get('AB_RUT');
+        $abonado->AB_SEXO=$request->get('AB_SEXO');
+        $abonado->AB_CORREO=$request->get('AB_CORREO');
+        $abonado->AB_NUMERODETELEFONO=$request->get('AB_NUMERO');
+        $abonado->AB_PATENTE=$request->get('AB_NUMERO');
+        $abonado->PLAN_ID=$request->get('idplan');
+
+        $abonado->save();
+        return redirect('/listadeabonados');
     }
 
     /**
@@ -101,5 +113,9 @@ class AbonadosController extends Controller
     public function destroy($id)
     {
         //
+        $abonado = Abonado::find($id);
+        $abonado->delete();
+        Session::flash('mensaje','Abonado Eliminado Correctamente');
+        return redirect('/listadeabonados');
     }
 }

@@ -11,12 +11,12 @@
     <link rel="icon" href="svg/logopng">
     <title>@yield("title")</title>
 
-    
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/metisMenu.min.css" rel="stylesheet">
-        <link href="css/sb-admin-2.css" rel="stylesheet">
-        <link href="css/morris.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/metisMenu.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/morris.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
         <link rel="icon" type="image/png" sizes="192x192"  href="svg/android-icon-192x192.png">
         <link rel="icon" type="image/png" sizes="32x32" href="svg/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="svg/favicon-96x96.png">

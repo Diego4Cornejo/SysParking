@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Registro de Abonados</h1>
+        <h2 class="page-header">Registro de Abonados</h2>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -69,10 +69,10 @@
                                         <input class="form-control" id="disabledInput" type="text" placeholder="" disabled>
                                     </div>
                                     <div class="form-group">
-                                            <label>Text area</label>
-                                            <textarea class="form-control" rows="4"></textarea>
+                                            <label>Caracteristicas:</label>
+                                            <textarea class="form-control" rows="5"></textarea>
                                     </div>
-                                </fieldset>
+                            </fieldset>
                         
                     </div>
                     <br>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"> Inicio </h1>
+        <h2 class="page-header"> Inicio </h2>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -62,7 +62,7 @@
                                     </div>
                                     <a href="#">
                                         <div class="panel-footer">
-                                            <span class="pull-left">Ver detalles</span>
+                                            <a href="listadeabonados" ><span class="pull-left">Ver detalles</span><a>
                                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                             <div class="clearfix"></div>
                                         </div>

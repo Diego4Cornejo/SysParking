@@ -30,6 +30,7 @@ Route::resource('abonados',"AbonadosController");
 Route::resource('graficos', "ChartsController");
 Route::resource('listadeabonados', "ListadeabonadosController");
 Route::get('abonado/{id}/edit', ['as' => 'id', 'uses' => 'AbonadosController@edit']);
+Route::get('abonado/{id}/delete', ['as' => 'id', 'uses' => 'AbonadosController@destroy']);
 
 
 //Auth::routes();

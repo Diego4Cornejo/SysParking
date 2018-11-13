@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Registro de Abonados</h1>
+        <h2 class="page-header">Editar Abonados</h2>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -17,15 +17,16 @@
             <div class="panel-body">
                     <div class="col-md-6"> 
                     <!--<form role="form" action={//{url('abonado/registrar')}}> -->
-                        {!!Form::open(['route' => 'abonados.update','method' => 'POST'])!!}
+                        {{ Form::open(array('method'=>'PUT','route' => ['abonados.update', $id])) }}
+
                             <br>
                             <div class="form-group">
                                 <label>Nombre Completo :</label>
-                                <input class="form-control" name="AB_NOMBRE" placeholder="">
+                            <input class="form-control" name="AB_NOMBRE" placeholder="{{ $datoabonado -> AB_NOMBRE}}">
                             </div>
                             <div class="form-group">
                                     <label>Rut :</label>
-                                    <input class="form-control" name="AB_RUT" placeholder="">
+                                    <input class="form-control" name="AB_RUT" placeholder="{{ $datoabonado -> AB_RUN}}">
                             </div>
                             <div class="form-group">
                                     <label>Sexo :</label>
@@ -38,18 +39,18 @@
                             </div>
                             <div class="form-group">
                                     <label>Correo Electronico :</label>
-                                    <input name="AB_CORREO" class="form-control" placeholder="">
+                                    <input name="AB_CORREO" class="form-control" placeholder="{{ $datoabonado -> AB_CORREO}}">
                             </div>
                             <div class="form-group">
                                     <label>Numero Telefonico :</label>
-                                    <input name="AB_NUMERO" class="form-control" placeholder="">
+                                    <input name="AB_NUMERO" class="form-control" placeholder="{{ $datoabonado -> AB_NUMERODETELEFONO}}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <br>
                             <div class="form-group">
                                     <label>Patente del Vehiculo :</label>
-                                    <input class="form-control" name="AB_PATENTE" maxlength="6" autocomplete="off"  placeholder="">
+                                    <input class="form-control" name="AB_PATENTE" maxlength="6" autocomplete="off"  placeholder="{{ $datoabonado -> AB_PATENTE}}">
                             </div>
                             <div class="form-group">
                                     <label>Tipo de Plan :</label>
@@ -70,14 +71,14 @@
                                     </div>
                                     <div class="form-group">
                                             <label>Text area</label>
-                                            <textarea class="form-control" rows="4"></textarea>
+                                            <textarea class="form-control" rows="5"></textarea>
                                     </div>
                                 </fieldset>
                         
                     </div>
                     <br>
                     <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">Registrar Abonado</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Editar Abonado</button>
                             <button type="reset" class="btn btn-primary btn-lg">Limpiar Campos</button>
                             </div>
                     {!!Form::close([''])!!}

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"> Ingreso de Vehiculos </h1>
+        <h2 class="page-header"> Ingreso de Vehiculos </h2>
     </div>
     <!-- /.col-lg-12 -->
 </div>
