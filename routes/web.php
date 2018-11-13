@@ -18,7 +18,6 @@ Route::get('ingreso', "PagesController@ingreso");
 Route::get('reportes', "PagesController@reportes");
 Route::get('consulta', "PagesController@consulta");
 Route::get('registrarabonado', "PagesController@registrarabonado");
-Route::get('listadeabonados', "PagesController@listadeabonados");
 Route::get('pagodeabonados', "PagesController@pagodeabonados");
 Route::get('operadores', "PagesController@operadores");
 Route::get('caja', "PagesController@caja");
@@ -27,9 +26,10 @@ Route::get('home', function () {
 });
 
 Route::resource('ingreso',"EstacionadosController");
-Route::resource('inicio',"InicioController");
 Route::resource('abonados',"AbonadosController");
 Route::resource('graficos', "ChartsController");
+Route::resource('listadeabonados', "ListadeabonadosController");
+Route::get('abonado/{id}/edit', ['as' => 'id', 'uses' => 'AbonadosController@edit']);
 
 
 //Auth::routes();

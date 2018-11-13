@@ -23,8 +23,8 @@
                                     <input class="form-control input-lg" name="CON_PATENTE" maxlength="6" autocomplete="off"  placeholder="Ingrese Patente EJ: VXDJ02 o vxdj02">
                                 </div>
                                 <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Realizar Consulta</button>
-                                <button type="reset" class="btn btn-primary">Limpiar Campos</button>
+                                <button type="submit" class="btn btn-primary btn-lg">Realizar Consulta</button>
+                                <button type="reset" class="btn btn-primary btn-lg">Limpiar Campos</button>
                                 </div>
                             </form>   
                     </div>

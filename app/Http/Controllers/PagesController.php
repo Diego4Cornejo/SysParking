@@ -23,10 +23,10 @@ class PagesController extends Controller
         return view('Layouts.registrarabonado');
     }
     public function listadeabonados(){
-        return view('Layouts.listadeabonados');
+        return view('Abonados.listadeabonados');
     }
     public function pagodeabonados(){
-        return view('Layouts.pagodeabonados');
+        return view('Abonados.pagodeabonados');
     }
     public function operadores(){
         return view('Layouts.operadores');

@@ -17,7 +17,7 @@
             <div class="panel-body">
                     <div class="col-md-6"> 
                     <!--<form role="form" action={//{url('abonado/registrar')}}> -->
-                        {!!Form::open(['route' => 'abonados.store','method' => 'POST'])!!}
+                        {!!Form::open(['route' => 'abonados.update','method' => 'POST'])!!}
                             <br>
                             <div class="form-group">
                                 <label>Nombre Completo :</label>

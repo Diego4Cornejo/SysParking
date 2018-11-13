@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link rel="icon" href="svg/logopng">
     <title>@yield("title")</title>
 
     
@@ -17,6 +17,14 @@
         <link href="css/sb-admin-2.css" rel="stylesheet">
         <link href="css/morris.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" sizes="192x192"  href="svg/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="svg/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="svg/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="svg/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
 
     <!--
     {!!Html::style('css/boostrap.min.css')!!}
@@ -255,7 +263,7 @@
                                 </li>
     
                             @else
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i>  {{ Auth::user()->name }} </a>
+                            <li><a href="#"><i class="fa fa-user fa-fw"></i>  {{ Auth::user()->name }} {{ Auth::user()->US_APELLIDO }} </a>
                             </li>
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Ajustes</a>
                             </li>

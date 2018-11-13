@@ -15,6 +15,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" sizes="192x192"  href="svg/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="svg/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="svg/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="svg/favicon-16x16.png">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

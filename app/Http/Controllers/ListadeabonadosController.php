@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Plan;
-use App\Abonado;
-use Session;
-use Redirect;
+use Illuminate\Support\Facades\DB;
 
-class AbonadosController extends Controller
+class ListadeabonadosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,12 @@ class AbonadosController extends Controller
      */
     public function index()
     {
-        $planes = Plan::all();
-        return view('Abonados.registrarabonado',compact('planes'));
+        //
+        $listadeabonados = DB::table('abonados')
+        ->select(DB::raw('ABONADO_ID,AB_NOMBRE,AB_RUN,AB_NUMERODETELEFONO,AB_CORREO,AB_ESTADO,AB_PATENTE,planes.PLAN_NOMBRE'))
+        ->join('planes' , 'abonados.PLAN_ID', '=', 'planes.ID_PLAN')
+        ->get();
+        return view("Abonados.listadeabonados",compact('listadeabonados'));
     }
 
     /**
@@ -40,20 +41,6 @@ class AbonadosController extends Controller
     public function store(Request $request)
     {
         //
-        Abonado::create([
-            'AB_CODIGO' => 'AB002',
-            'PLAN_ID' => $request['idplan'],
-            'AB_PATENTE' => strtoupper($request['AB_PATENTE']),
-            'AB_RUN' => $request['AB_RUT'],
-            'AB_NOMBRE' => $request['AB_NOMBRE'],
-            'AB_SEXO' => $request['AB_SEXO'],
-            'AB_CORREO' => $request['AB_CORREO'],
-            'AB_NUMERODETELEFONO' => $request['AB_NUMERO'],
-            'AB_FECHADENACIMIENTO' => date("Y-m-d H:i:s"),
-            'AB_ESTADO' => 'Registrado'
-        ]);
-        Session::flash('mensaje','Abonado Registrado Correctamente');
-        return redirect('/abonados');
     }
 
     /**
@@ -64,7 +51,7 @@ class AbonadosController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -76,8 +63,6 @@ class AbonadosController extends Controller
     public function edit($id)
     {
         //
-        $abonado= Abonado::find($id);
-        dd($abonado);
     }
 
     /**
