@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class ChartsController extends Controller
 {
@@ -21,7 +22,18 @@ class ChartsController extends Controller
         ->get();
         return view('graficos.graficos',compact('entradas'));
     }
+    public function pdf()
+    {        
+        $entradas = DB::table('estacionados')
+        ->select(DB::raw('tarifas.TARIFAS_TIPODEATENCION , COUNT(tarifas.TARIFAS_TIPODEATENCION) as VECES'))
+        ->join('tarifas' , 'estacionados.ID_TARIFA', '=', 'tarifas.ID_TARIFA')
+        ->groupBy('tarifas.TARIFAS_TIPODEATENCION')
+        ->get();
 
+        $pdf = PDF::loadView('pdf', compact('entradas'));
+
+        return $pdf->download('invoice.pdf');
+    }
     /**
      * Show the form for creating a new resource.
      *

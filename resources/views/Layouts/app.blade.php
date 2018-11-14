@@ -27,13 +27,6 @@
         <meta name="theme-color" content="#ffffff">
 
     <!--
-    {!!Html::style('css/boostrap.min.css')!!}
-    {!!Html::style('css/metisMenu.min.css')!!}
-    {!!Html::style('css/sb-admin-2.css')!!}
-    {!!Html::style('css/morris.css')!!}
-    {!!Html::style('css/font-awesome.min.css')!!}
-    -->
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

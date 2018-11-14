@@ -1,0 +1,12 @@
+table {
+    background-color: aqua;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+td,
+th {
+    padding: 0;
+}
+body{
+    background: red;
+}
