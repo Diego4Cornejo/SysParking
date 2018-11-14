@@ -16,3 +16,7 @@ php artisan key:generate
 .........................................
 
 php artisan serve
+
+.........................................
+
+composer require barryvdh/laravel-dompdf

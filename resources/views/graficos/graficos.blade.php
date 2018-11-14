@@ -48,7 +48,7 @@
                                 <ul class="dropdown-menu pull-right" role="menu">
                                     <li><a href="#">Generar Excel</a>
                                     </li>
-                                    <li><a href="pdf">Generar PDF</a>
+                                    <li><a href="pdf" target="_blank">Generar PDF</a>
                                     </li>
                                 </ul>
                             </div>
@@ -56,45 +56,7 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                            <div id="piechart" style="width: 700px; height: 500px;"></div>
-                    <div id="tabs">
-                            <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab1" data-toggle="tab">tab1</a></li>
-                            <li><a href="#tab2" data-toggle="tab">tab2</a></li>
-                            <li><a href="#tab3" data-toggle="tab">tab3</a></li>
-                            </ul>
-                            <div class="tab-content">           
-                            <!--tabcontent-->
-                            <div class="tab-pane fade" id="tab1">
-
-                            <div class="col-md-9">
-                             <div class="tab-content"> 
-                              <div class="tab-pane fade in active" id="tab11" >
-                              </div>
-                            </div><!--tab-content -->
-                            </div><!--F9 -->
-                            </div><!--FIN TAB MANEJO -->
-                            <!---------------------------------------------------------->
-                            <div class="tab-pane fade" id="tab2">
-                            <div class="col-md-9">
-                             <div class="tab-content">
-                              <div class="tab-pane fade in active" id="tab22" >
-                              </div>
-                            </div><!--tab-content -->
-                            </div><!--F9 -->
-                            </div><!--FIN TAB MANEJO -->
-                            <!---------------------------------------------------------->
-                            <div class="tab-pane fade" id="tab3">
-                            <div class="col-md-9">
-                             <div class="tab-content">
-                              <div class="tab-pane fade in active" id="tab33" >
-                              </div>
-                            </div><!--tab-content -->
-                            </div><!--F9 -->
-                            </div><!--FIN TAB MANEJO -->
-                            <!---------------------------------------------------------->
-                        </div><!--fin tabs-CONTENT -->
-                        </div>  <!--fin tabs -->
+                           <div id="piechart" style="width: 700px; height: 500px;"></div>
                     </div>
                 </div>
         </div>      
