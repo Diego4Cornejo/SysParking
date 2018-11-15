@@ -97,7 +97,7 @@ class AbonadosController extends Controller
         $abonado->AB_SEXO=$request->get('AB_SEXO');
         $abonado->AB_CORREO=$request->get('AB_CORREO');
         $abonado->AB_NUMERODETELEFONO=$request->get('AB_NUMERO');
-        $abonado->AB_PATENTE=$request->get('AB_NUMERO');
+        $abonado->AB_PATENTE=$request->get('AB_PATENTE');
         $abonado->PLAN_ID=$request->get('idplan');
 
         $abonado->save();
