@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+function printExternal(url) {
+    var printWindow = window.open( url, 'Print', 'left=200, top=200, width=300, height=300, toolbar=0, resizable=0');
+    printWindow.addEventListener('load', function(){
+        printWindow.print();
+        printWindow.close();
+    }, true);
+}
+</script>
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header"> Ingreso de Vehiculos </h2>
@@ -49,7 +58,7 @@
                                         </select>
                                     </div>
                                 <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Generar Boucher</button>
+                                <button type="submit" class="btn btn-primary btn-lg" onclick="printExternal('voucher')">Generar Boucher</button>
                                 <button type="reset" class="btn btn-primary btn-lg">Limpiar Campos</button>
                                 </div>
                             {!!Form::close([''])!!}
@@ -93,6 +102,7 @@
         <!-- /.panel -->
     </div>
     <!-- /.col-lg-12 -->
+
 </div>
 <!-- /.row -->
 @endsection

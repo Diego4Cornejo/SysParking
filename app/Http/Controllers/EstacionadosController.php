@@ -19,7 +19,7 @@ class EstacionadosController extends Controller
     public function index()
     {
         $tarifas = tarifa::all();
-        //dd($tarifas);
+        //$codebar = DNS1D::getBarcodeSVG("4445645656", "PHARMA2T");
         return view('ingreso.ingreso',compact('tarifas'));
 
     }
@@ -47,6 +47,7 @@ class EstacionadosController extends Controller
             'EST_INGRESO' => date("Y-m-d H:i:s")
         ]);
         Session::flash('mensaje','Vehiculo Registrado Correctamente');
+        
         return redirect('/ingreso');
     }
     public function show($id)

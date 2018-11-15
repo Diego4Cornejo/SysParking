@@ -35,7 +35,7 @@ tbody td {
 tfoot th {
   text-align: right;
 }
-    </style>
+</style>
 </head>
 <body>
     <div><img src="./svg/logopng.png" alt="Smiley face" height="70" width="70"> <h2>Reporte por tipo de visita:</h2></div>

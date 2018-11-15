@@ -48,7 +48,7 @@
                                 <ul class="dropdown-menu pull-right" role="menu">
                                     <li><a href="#">Generar Excel</a>
                                     </li>
-                                    <li><a href="pdf" target="_blank">Generar PDF</a>
+                                    <li><a href="pdf" target="_blank" >Generar PDF</a>
                                     </li>
                                     <li><a href="" onclick="window.print()">Generar PDF</a>
                                     </li>
@@ -61,7 +61,7 @@
                            <div id="piechart" style="width: 700px; height: 500px;"></div>
                     </div>
                 </div>
-        </div>      
+        </div>     
 </div>
 <!-- /.row -->
 @endsection

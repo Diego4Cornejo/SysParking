@@ -32,7 +32,7 @@ class ChartsController extends Controller
 
         $pdf = PDF::loadView('pdf', compact('entradas'));
         return $pdf->stream('report.pdf');
-       // return $pdf->download('invoice.pdf');
+       //return $pdf->download('invoice.pdf');
     }
     /**
      * Show the form for creating a new resource.
