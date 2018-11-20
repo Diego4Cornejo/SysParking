@@ -22,13 +22,21 @@ table{
     margin-left:10px; 
     margin-top:10px;
     margin-bottom:10px;
-    text-align: center;
+    
 }
 th{
     padding: 10px;
+    font-size: 14px;
 }
 td{
-    padding: 10px;
+    padding: 7px;
+    font-size: 12px;
+}
+.item{
+    text-align: right;
+}
+.item2{
+    text-align: center;
 }
 .codebar{
     margin-left: 27px;
@@ -37,7 +45,7 @@ td{
 </head>
 <body class="receipt">
         <section class="sheet padding-10mm">
-                <table align="center" >
+                <table align="center">
                     <thead>
                         <tr>
                             <th colspan="2">Ingreso Clinica RedSalud Mayor de Temuco</th>
@@ -46,24 +54,24 @@ td{
                     <tbody>
                         <tr>
                             <td>Fecha de Ingreso:</td>
-                            <td>{{ $fecha }}</td>    
+                            <td class="item">{{ $fecha }}</td>    
                         </tr>
                         <tr>
                             <td>Hora de Ingreso:</td>
-                            <td>{{ $hora }}</td>    
+                            <td class="item">{{ $hora }}</td>    
                         </tr>
+                        <tr>
                             <td>Tipo de Ingreso:</td>
-                            <td>{{ $voucher -> TARIFAS_TIPODEATENCION }}</td>    
+                            <td class="item">{{ $voucher -> TARIFAS_TIPODEATENCION }}</td>    
                         </tr>
+                    <tr>
+                        <td colspan="2"><center> {!! DNS1D::getBarcodeHTML($codvoucher, "C128",2,44)  !!}</center> </td>
                     </tr>
                     <tr>
-                    <td colspan="2">Recuerde no dejar pertenencias de valor dentro del vehiculo</td>
+                    <td colspan="2" class="item2">Recuerde no dejar pertenencias de valor dentro del vehiculo</td>
                     </tr>
                     </tbody>
                 </table>
-                <div class="codebar">  
-                {!! DNS1D::getBarcodeHTML($codvoucher, "C128")  !!}
-                </div>
     </section>
 </body>
 </html>

@@ -17,7 +17,7 @@ class voucherController extends Controller
         ->first();
 
         $fecha = substr( $voucher -> EST_INGRESO, 0,10);
-        $hora = substr( $voucher -> EST_INGRESO, 11,8);
+        $hora = substr( $voucher -> EST_INGRESO, 11,5);
 
        /* (string) $fechacod = str_replace(
             array("-", ":", " "),
