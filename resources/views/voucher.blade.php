@@ -5,69 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PDF</title>
-    <style type="text/css" media="all">
-        
-html {
-  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+    <link href="http://allfont.net/allfont.css?fonts=fake-receipt" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+   
+<style type="text/css" media="all">
+body.receipt .sheet { margin-left: 0px; 
+width: 90mm; 
+height: 100mm;
 }
-
-thead th, tfoot th {
-  
+ /* change height as you like */
+@media print { body.receipt { width: 58mm } } /* this line is needed for fixing Chrome's bug */
+html {
+  font-family: 'Fake Receipt', arial;
 }
 table{
-    
+    margin-left:10px; 
+    margin-top:10px;
+    margin-bottom:10px;
+    text-align: center;
 }
-
-th {
-  letter-spacing: 2px;
-  padding: 10px;
+th{
+    padding: 10px;
 }
-
-td {
-  letter-spacing: 1px;
-  padding: 10px;
+td{
+    padding: 10px;
 }
-
-tbody td {
-  text-align: center;
-}
-
-tfoot th {
-  text-align: right;
+.codebar{
+    margin-left: 27px;
 }
 </style>
 </head>
-<body>
-        <div id="elem">
-                <table border="1">
+<body class="receipt">
+        <section class="sheet padding-10mm">
+                <table align="center" >
                     <thead>
                         <tr>
-                            Bienvenido
+                            <th colspan="2">Ingreso Clinica RedSalud Mayor de Temuco</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Fecha de Ingreso:<td>
-                            <td>{{ date('Y-m-d') }}</td>    
+                            <td>Fecha de Ingreso:</td>
+                            <td>{{ $fecha }}</td>    
                         </tr>
                         <tr>
-                            <td>Hora de Ingreso:<td>
-                            <td>{{ date('H:i:s') }}</td>    
+                            <td>Hora de Ingreso:</td>
+                            <td>{{ $hora }}</td>    
                         </tr>
-                            <td>Tipo de Ingreso:<td>
-                            <td>{{ date('H:i:s') }}</td>    
+                            <td>Tipo de Ingreso:</td>
+                            <td>{{ $voucher -> TARIFAS_TIPODEATENCION }}</td>    
                         </tr>
-                        @forelse ($voucher as $vou)
-                        <tr>  
-                            <td>{{ $vou }}</td>
-                            <td></td>
-                        </tr>
-                    @empty
-
-                    @endforelse
+                    </tr>
+                    <tr>
+                    <td colspan="2">Recuerde no dejar pertenencias de valor dentro del vehiculo</td>
+                    </tr>
                     </tbody>
                 </table>
-                <td colspan="2">{!! DNS1D::getBarcodeHTML("4445645656", "C39")  !!}<td>
-        </div> 
+                <div class="codebar">  
+                {!! DNS1D::getBarcodeHTML($codvoucher, "C128")  !!}
+                </div>
+    </section>
 </body>
 </html>

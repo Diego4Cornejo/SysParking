@@ -49,9 +49,6 @@
                                     <li><a href="#">Generar Excel</a>
                                     </li>
                                     <li><a href="pdf" target="_blank" >Generar PDF</a>
-                                    </li>
-                                    <li><a href="" onclick="window.print()">Generar PDF</a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
