@@ -72,11 +72,6 @@ function printExternal(url) {
                                 <script> printExternal('voucher');</script>
                                 {{Session::get('mensaje')}}
                             </div>
-                            <div class="progress progress-striped active">
-                                    <div id="dynamic" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                                        <span class="sr-only"></span>
-                                    </div>
-                                </div>
                             @endif
 <!-- -->
                     </div>

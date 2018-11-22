@@ -296,9 +296,6 @@
                             <a href="#"><i class="fa fa-user-md fa-fw"></i> Gestión de Abonados <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('abonados') }}">Registrar Abonado</a>
-                                </li>
-                                <li>
                                     <a href="{{ url('listadeabonados') }}">Lista de Abonados</a>
                                 </li>
                                 <li>

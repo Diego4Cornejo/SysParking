@@ -10,7 +10,7 @@
    
 <style type="text/css" media="all">
 body.receipt .sheet { margin-left: 0px; 
-width: 90mm; 
+width: 70mm; 
 height: 100mm;
 }
  /* change height as you like */
@@ -30,7 +30,7 @@ th{
 }
 td{
     padding: 7px;
-    font-size: 12px;
+    font-size: 11px;
 }
 .item{
     text-align: right;
@@ -65,7 +65,7 @@ td{
                             <td class="item">{{ $voucher -> TARIFAS_TIPODEATENCION }}</td>    
                         </tr>
                     <tr>
-                        <td colspan="2"><center> {!! DNS1D::getBarcodeHTML($codvoucher, "C128",2,44)  !!}</center> </td>
+                        <td colspan="2"><center> {!! DNS1D::getBarcodeHTML($codvoucher, "C128",2,37)  !!}</center> </td>
                     </tr>
                     <tr>
                     <td colspan="2" class="item2">Recuerde no dejar pertenencias de valor dentro del vehiculo</td>

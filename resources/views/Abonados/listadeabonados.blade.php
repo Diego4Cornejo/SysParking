@@ -5,9 +5,13 @@
     <div class="col-lg-12">
         <h2 class="page-header">Abonados Registrados</h2>
     </div>
+    <div class="col-md-4 col-md-offset-18">
+        <a href="{{ url('abonados') }}"><button  type="button" class="btn btn-primary "> Registar Nuevo Abonado <i class="fa fa-plus fa-fw"></i></button></a>
+    </div>
     <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
+<br>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
