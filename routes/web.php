@@ -26,6 +26,7 @@ Route::get('home', function () {
 });
 
 Route::resource('ingreso',"EstacionadosController");
+Route::resource('caja',"CajaController");
 Route::resource('abonados',"AbonadosController");
 Route::resource('graficos', "ChartsController");
 Route::resource('listadeabonados', "ListadeabonadosController");

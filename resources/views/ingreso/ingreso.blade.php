@@ -4,7 +4,7 @@
 <script>
 function printExternal(url) {
     //var printWindow = window.open( url, 'Print', 'left=200, top=200, width=300, height=300, toolbar=0, resizable=0');
-    var printWindow = window.open( url, '_blank', 'toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,left=10000, top=10000, width=100, height=100, visible=none', '');
+    var printWindow = window.open( url, '_blank', 'toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,left=10000, top=10000, width=300, height=300, visible=none', '');
     printWindow.addEventListener('load', function(){
         printWindow.print();
         printWindow.close();
@@ -25,7 +25,7 @@ function printExternal(url) {
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Formulario de registro de ingreso de vehiculos
+                    <i class="fa fa-automobile fa-fw"></i> Formulario de registro de ingreso de vehiculos
             </div>
             <div class="panel-body">
 

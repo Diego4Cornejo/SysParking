@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use App\Tarifa;
 use App\Estacionado;
 use Session;
@@ -43,7 +44,7 @@ class EstacionadosController extends Controller
             'EST_PATENTE' => strtoupper($request['EST_PATENTE']),
             'ID_TARIFA' => $request['idtarifa'],
             'EST_CODIGOBOUCHER' => strtoupper(Str::random(2)),
-            'ID_USUARIOINGRESO' => 1,
+            'ID_USUARIOINGRESO' => Auth::user()->id,
             'ID_ESTADO' => 1,
             'EST_INGRESO' => date("Y-m-d H:i:s")
         ]);

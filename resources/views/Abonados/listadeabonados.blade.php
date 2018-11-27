@@ -16,7 +16,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Abonados Registrados
+                    <i class="fa fa-user-md fa-fw"></i> Abonados Registrados
             </div>
             <div class="panel-body">
                     <div class="table-responsive">

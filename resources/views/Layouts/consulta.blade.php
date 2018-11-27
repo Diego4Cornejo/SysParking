@@ -12,12 +12,12 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Formulario de consulta por vehiculo
+                    <i class="fa fa-qrcode fa-fw"></i> Formulario de consulta por vehiculo
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3"> 
-                            <form role="form" action="{{}}">
+                            {!!Form::open(['route' => 'ingreso.store','method' => 'POST'])!!}
                                 <div class="form-group">
                                     <h4><label>Patente del Vehiculo</label></h4>
                                     <input class="form-control input-lg" name="CON_PATENTE" maxlength="6" autocomplete="off"  placeholder="Ingrese Patente EJ: VXDJ02 o vxdj02">
@@ -26,17 +26,11 @@
                                 <button type="submit" class="btn btn-primary btn-lg">Realizar Consulta</button>
                                 <button type="reset" class="btn btn-primary btn-lg">Limpiar Campos</button>
                                 </div>
-                            </form>   
+                            {!!Form::close([''])!!} 
                     </div>
                     <br>
-                    <div class="col-md-6"> <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                        </div>
+                    <div class="col-md-6">
+                        @yield('detalles')
                         <!-- /.table-responsive -->
                     </div>
                 </div>
