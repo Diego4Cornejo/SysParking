@@ -19,7 +19,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <a href="{{ url('/delete') }}"><button type="button" class="btn btn-danger">Si</button></a>
+                        <a href="{{ url('/cierredecaja') }}"><button type="button" class="btn btn-danger">Si</button></a>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -40,7 +40,6 @@
             <div class="panel-body">
                 <div class="col-md-6"> 
                             <!--<form role="form" action={//{url('abonado/registrar')}}> -->
-                                {!!Form::open(['route' => 'abonados.store','method' => 'POST'])!!}
                                     <br>
                                     <div class="form-group">
                                             <label>Realizar consulta por  :</label>
@@ -56,16 +55,56 @@
                                     <div class="form-group">
                                         <label>Patente o Código de Voucher :</label>
                                         <div class="form-group input-group">
-                                                <input type="text" class="form-control input-lg text-center">
+                                                <input id="patente" type="text" name="patente" maxlength="8" class="form-control input-lg text-center">
                                                 <span class="input-group-btn">
-                                                    <button class="btn btn-success input-lg" type="button"><i class="fa fa-search"></i> Buscar
+                                                    <button class="btn btn-success input-lg" type="submit"><i class="fa fa-search"></i> Buscar
                                                     </button>
                                                 </span>
+                                                
                                             </div>
                                     </div>
                                 
                                 {!!Form::close([''])!!}
                 </div>
+                
+                <div class="col-md-6"> 
+                    
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="2" class="text-center"><h2>Datos Vehiculo</h2></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>  
+                                <td>Patente del Vehiculo o COD: </td>
+                                <td>TH2424</td>
+                            </tr>
+                            <tr>  
+                                <td> Hora de Ingreso: </td>
+                                <td></td>
+                            </tr>
+                            <tr>  
+                                <td> Fecha de Ingreso: </td>
+                                <td></td>
+                            </tr>
+                            <tr>  
+                                <td> Tipo de Ingreso: </td>
+                                <td></td>
+                            </tr>
+                            <tr>  
+                                    <td> Duracion de estadia:</td>
+                                    <td></td>
+                                </tr>
+                            <tr>  
+                                <td><h4> Cobro: </h4></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+               
+   
             </div>
             <!-- /.panel-body -->
         </div>

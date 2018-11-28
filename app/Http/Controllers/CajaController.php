@@ -21,10 +21,11 @@ class CajaController extends Controller
         //
         $cajas = DB::table('cajas')
         ->select(DB::raw('CAJA_FECHACIERRE'))
+        ->orderBy('ID_CAJA', 'desc')
         ->first();
        
-        /*var_dump($cajas ->CAJA_FECHACIERRE);
-        dd($cajas ->CAJA_FECHACIERRE);*/
+       /* var_dump($cajas ->CAJA_FECHACIERRE);
+        dd($cajas ->CAJA_FECHACIERRE); */
         
         if ($cajas->CAJA_FECHACIERRE == NULL) {
             return view('Caja.caja');
@@ -33,7 +34,16 @@ class CajaController extends Controller
         }
         
     }
+    public function GetData()
+    {
+        $datosvehi = DB::table('estacionados')
+        ->select(DB::raw('ID_ESTACIONADO,EST_CODIGOBOUCHER,EST_PATENTE,tarifas.TARIFAS_TIPODEATENCION,EST_INGRESO,ID_ESTADO'))
+        ->join('tarifas' , 'estacionados.ID_TARIFA', '=', 'tarifas.ID_TARIFA')
+        ->where('EST_PATENTE',request()->id)->where('ID_ESTADO',1)
+        ->get();
 
+        return Response::json($datosvehi);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -71,7 +81,7 @@ class CajaController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -83,6 +93,7 @@ class CajaController extends Controller
     public function edit($id)
     {
         //
+        
     }
 
     /**
