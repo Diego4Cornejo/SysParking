@@ -59,10 +59,12 @@ function printExternal(url) {
                                             @endforelse
                                         </select>
                                     </div>
-                                <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-lg" >Generar Boucher</button>
-                                <button type="reset" class="btn btn-primary btn-lg">Limpiar Campos</button>
-                                </div>
+                                    <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg" >Generar Boucher</button>
+                                    </div>
+                            
+                                
+                           
                             {!!Form::close([''])!!}
                                 <!-- Mensaje-->
                                 <br>
