@@ -42,6 +42,7 @@ class CajaController extends Controller
         ->where('EST_PATENTE',request()->id)->where('ID_ESTADO',1)
         ->get();
 
+
         return Response::json($datosvehi);
     }
     /**

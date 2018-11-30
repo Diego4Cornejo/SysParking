@@ -39,8 +39,8 @@
             </div>
             <div class="panel-body">
                 <div class="col-md-6"> 
-                            <!--<form role="form" action={//{url('abonado/registrar')}}> -->
-                                    <br>
+                            <form role="form" action={{url('abonado/registrar')}}>
+                                    
                                     <div class="form-group">
                                             <label>Realizar consulta por  :</label>
                                             <div class="text-center">
@@ -57,7 +57,8 @@
                                         <div class="form-group input-group">
                                                 <input id="patente" type="text" name="patente" maxlength="8" class="form-control input-lg text-center">
                                                 <span class="input-group-btn">
-                                                    <button class="btn btn-success input-lg" type="submit"><i class="fa fa-search"></i> Buscar
+                                                    <a href="/patente/consuta/ "><button class="btn btn-success input-lg" type="submit"><i class="fa fa-search"></i> Buscar
+                                                        https://www.youtube.com/watch?v=m5MZ4g-_-Dw&list=PLZPrWDz1MolrxS1uw-u7PrnK66DCFmhDR&index=7
                                                     </button>
                                                 </span>
                                                 
