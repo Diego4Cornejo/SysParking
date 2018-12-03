@@ -256,7 +256,7 @@
                                 </li>
     
                             @else
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i>  {{ Auth::user()->name }} {{ Auth::user()->US_APELLIDO }} </a>
+                            <li><a href="#"><i class="fa fa-user fa-fw"></i>  {{ Auth::user()->name }} </a>
                             </li>
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Ajustes</a>
                             </li>
@@ -305,7 +305,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{{ url('operadores') }}"><i class="fa fa-wrench fa-fw"></i> Operadores </a>
+                            <a href="{{ url('listadeoperadores') }}"><i class="fa fa-wrench fa-fw"></i> Operadores </a>
                         </li>
                         <li>
                             <a href="{{ url('graficos') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Graficos y Reportes </a>

@@ -27,11 +27,6 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
-                        <label for="US_APELLIDO" class="col-md-4 col-form-label text-md-right">Apellidos :</label>
-                        <div class="col-md-6">
-                            <input name="US_APELLIDO" id="US_APELLIDO" type="text" class="form-control">
-                        </div>
                         </div>
                         <div class="form-group row">
                                 <label for="US_RUT" class="col-md-4 col-form-label text-md-right">RUT :</label>

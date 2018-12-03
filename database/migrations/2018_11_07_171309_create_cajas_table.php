@@ -20,6 +20,7 @@ class CreateCajasTable extends Migration
             $table->datetime('CAJA_FECHACIERRE')->nullable();
             $table->integer("CAJA_MONTOINICIAL");
             $table->integer("CAJA_MONTOFINAL")->nullable();
+            $table->string("CAJA_ESTADO");
             $table->timestamps();
 
             $table->foreign('ID_USUARIO')->references('id')->on('users');

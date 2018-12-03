@@ -122,7 +122,7 @@
 
                             @else
                                 <div class="container">
-                                  <h3 class="display-4">Bienvenido : <i class="fa fa-user fa-fw"></i>  {{ Auth::user()->name }} {{ Auth::user()->US_APELLIDO }}</h3>
+                                  <h3 class="display-4">Bienvenido : <i class="fa fa-user fa-fw"></i>  {{ Auth::user()->name }}</h3>
                                   <p class="lead">Como <i class="fa fa-wrench fa-fw"></i> Supervisor tienes acceso a los siguientes modulos:</p>
                                   <ul class="list-group">
                                         <li class="list-group-item">Ingreso de Vehiculos</li>

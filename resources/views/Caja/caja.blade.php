@@ -38,36 +38,162 @@
                 Formulario de pago de vehiculos estacionados
             </div>
             <div class="panel-body">
+                @if(Session::has('mensaje'))
                 <div class="col-md-6"> 
-                            <form role="form" action={{url('abonado/registrar')}}>
-                                    
-                                    <div class="form-group">
-                                            <label>Realizar consulta por  :</label>
-                                            <div class="text-center">
-                                            <label class="radio-inline input-lg">
-                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked> Voucher
-                                            </label>
-                                            <label class="radio-inline input-lg">
-                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2"> Patente
-                                            </label>
-                                            </div>
-                                        </div>
-                                    <div class="form-group">
-                                        <label>Patente o Código de Voucher :</label>
-                                        <div class="form-group input-group">
-                                                <input id="patente" type="text" name="patente" maxlength="8" class="form-control input-lg text-center">
-                                                <span class="input-group-btn">
-                                                    <a href="/patente/consuta/ "><button class="btn btn-success input-lg" type="submit"><i class="fa fa-search"></i> Buscar
-                                                        https://www.youtube.com/watch?v=m5MZ4g-_-Dw&list=PLZPrWDz1MolrxS1uw-u7PrnK66DCFmhDR&index=7
-                                                    </button>
-                                                </span>
-                                                
-                                            </div>
-                                    </div>
-                                
-                                {!!Form::close([''])!!}
+                        {{ Form::open(array('method'=>'PUT','route' => ['abonados.update', $datosvehiculo -> ID_ESTACIONADO])) }}
+                        <div class="form-group">
+                                <label>Realizar consulta por  :</label>
+                                <div class="text-center">
+                                <label class="radio-inline input-lg">
+                                    <input type="radio" name="consultapor" id="optionsRadiosInline1" value="Voucher" checked> Voucher
+                                </label>
+                                <label class="radio-inline input-lg">
+                                    <input type="radio" name="consultapor" id="optionsRadiosInline2" value="Patente"> Patente
+                                </label>
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <label>Patente o Código de Voucher :</label>
+                            <input class="form-control input-lg text-center" name="PATENTE_CODVOU" maxlength="6" autocomplete="off"  placeholder="">
+        
+                        </div>
+                        <div class="form-group">
+                            <label>¿Presenta Documentos Correspondientes?  :</label>
+                            <div class="text-center">
+                            <label class="radio-inline input-lg">
+                                <input type="radio" onclick="javascript:yesnoCheck();" name="Documentos" id="Si" value="Si" checked> Si
+                            </label>
+                            <label class="radio-inline input-lg">
+                                <input type="radio" name="Documentos" onclick="javascript:yesnoCheck();" id="No" value="No"> No
+                            </label>
+                            </div>
+                        </div>
+                        <div class="form-group" id="ifYes" style="display:none">
+                            <label>Tipo de Atención</label>
+                            <select name="idtarifa" id="idtarifa" type="text" class="form-control input-lg">
+                                <option>Seleccionar...</option>
+                                @forelse ($tarifas as $tarifa)
+                                    <option value="{{$tarifa -> ID_TARIFA}}"name="EST_TIPODEATENCION">{{ $tarifa -> TARIFAS_TIPODEATENCION }}</option>
+                                @empty
+        
+                                @endforelse
+                            </select>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-success input-lg " type="submit"><i class="fa fa-search"></i> Realizar Busqueda </button>
+                        </div>
+                        <script type="text/javascript">
+        
+                            function yesnoCheck() {
+                                if (document.getElementById('No').checked) {
+                                    document.getElementById('ifYes').style.display = 'block';
+                                }
+                                else document.getElementById('ifYes').style.display = 'none';
+                            
+                            }
+                            
+                        </script>
+              
+        
+                    
+                    {!!Form::close([''])!!}
+                    </div>
+                    <div class="col-md-6">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="2" class="text-center"><h2>Datos Vehiculo</h2></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>  
+                                <td>Patente del Vehiculo o COD: </td>
+                                <td>{{ $datosvehiculo -> EST_PATENTE }}</td>
+                            </tr>
+                            <tr>  
+                                <td> Hora de Ingreso: </td>
+                            <td>{{ $hora }}</td>
+                            </tr>
+                            <tr>  
+                                <td> Fecha de Ingreso: </td>
+                                <td> {{ $fecha }} </td>
+                            </tr>
+                            <tr>  
+                                <td> Tipo de Ingreso: </td>
+                                <td> {{ $datosvehiculo -> TARIFAS_TIPODEATENCION }} </td>
+                            </tr>
+                            <tr>  
+                                    <td> Duracion de estadia:</td>
+                                    <td></td>
+                                </tr>
+                            <tr>  
+                                <td><h4> Cobro: </h4></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                
+                @else
+                <div class="col-md-6"> 
+                    {!!Form::open(['action' => 'CajaController@consultar'])!!}
+                        
+                        <div class="form-group">
+                                <label>Realizar consulta por  :</label>
+                                <div class="text-center">
+                                <label class="radio-inline input-lg">
+                                    <input type="radio" name="consultapor" id="optionsRadiosInline1" value="Voucher" checked> Voucher
+                                </label>
+                                <label class="radio-inline input-lg">
+                                    <input type="radio" name="consultapor" id="optionsRadiosInline2" value="Patente"> Patente
+                                </label>
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <label>Patente o Código de Voucher :</label>
+                            <input class="form-control input-lg text-center" name="PATENTE_CODVOU" maxlength="6" autocomplete="off"  placeholder="">
+
+                        </div>
+                        <div class="form-group">
+                            <label>¿Presenta Documentos Correspondientes?  :</label>
+                            <div class="text-center">
+                            <label class="radio-inline input-lg">
+                                <input type="radio" onclick="javascript:yesnoCheck();" name="Documentos" id="Si" value="Si" checked> Si
+                            </label>
+                            <label class="radio-inline input-lg">
+                                <input type="radio" name="Documentos" onclick="javascript:yesnoCheck();" id="No" value="No"> No
+                            </label>
+                            </div>
+                        </div>
+                        <div class="form-group" id="ifYes" style="display:none">
+                            <label>Tipo de Atención</label>
+                            <select name="idtarifa" id="idtarifa" type="text" class="form-control input-lg">
+                                <option>Seleccionar...</option>
+                                @forelse ($tarifas as $tarifa)
+                                    <option value="{{$tarifa -> ID_TARIFA}}"name="EST_TIPODEATENCION">{{ $tarifa -> TARIFAS_TIPODEATENCION }}</option>
+                                @empty
+
+                                @endforelse
+                            </select>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-success input-lg " type="submit"><i class="fa fa-search"></i> Realizar Busqueda </button>
+                        </div>
+                        <script type="text/javascript">
+
+                            function yesnoCheck() {
+                                if (document.getElementById('No').checked) {
+                                    document.getElementById('ifYes').style.display = 'block';
+                                }
+                                else document.getElementById('ifYes').style.display = 'none';
+                            
+                            }
+                            
+                        </script>
+              
+
+                    
+                    {!!Form::close([''])!!}
+                </div>
                 <div class="col-md-6"> 
                     
                     <table class="table table-striped table-bordered table-hover">
@@ -79,7 +205,7 @@
                         <tbody>
                             <tr>  
                                 <td>Patente del Vehiculo o COD: </td>
-                                <td>TH2424</td>
+                                <td> </td>
                             </tr>
                             <tr>  
                                 <td> Hora de Ingreso: </td>
@@ -104,6 +230,9 @@
                         </tbody>
                     </table>
                 </div>
+                @endif
+                
+               
                
    
             </div>

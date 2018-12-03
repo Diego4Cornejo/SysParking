@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\caja;
+use App\Tarifa;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Redirect;
@@ -18,7 +19,17 @@ class CajaController extends Controller
      */
     public function index()
     {
+
         //
+        $tarifas = tarifa::all();
+
+        $conteo = DB::table('cajas')->count();
+        if($conteo == 0)
+        {
+            return view('Caja.aperturadecaja');
+        }
+        else{
+
         $cajas = DB::table('cajas')
         ->select(DB::raw('CAJA_FECHACIERRE'))
         ->orderBy('ID_CAJA', 'desc')
@@ -28,22 +39,14 @@ class CajaController extends Controller
         dd($cajas ->CAJA_FECHACIERRE); */
         
         if ($cajas->CAJA_FECHACIERRE == NULL) {
-            return view('Caja.caja');
+            Session::forget('mensaje');
+            return view('Caja.caja',compact('tarifas'));
+
         } else {
             return view('Caja.aperturadecaja');
         }
+     }
         
-    }
-    public function GetData()
-    {
-        $datosvehi = DB::table('estacionados')
-        ->select(DB::raw('ID_ESTACIONADO,EST_CODIGOBOUCHER,EST_PATENTE,tarifas.TARIFAS_TIPODEATENCION,EST_INGRESO,ID_ESTADO'))
-        ->join('tarifas' , 'estacionados.ID_TARIFA', '=', 'tarifas.ID_TARIFA')
-        ->where('EST_PATENTE',request()->id)->where('ID_ESTADO',1)
-        ->get();
-
-
-        return Response::json($datosvehi);
     }
     /**
      * Show the form for creating a new resource.
@@ -61,6 +64,23 @@ class CajaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function consultar(Request $request)
+    {
+        $tarifas = tarifa::all();
+        $datosvehiculo = DB::table('estacionados')
+        ->select(DB::raw('ID_ESTACIONADO,EST_CODIGOBOUCHER,EST_PATENTE,tarifas.TARIFAS_TIPODEATENCION,EST_INGRESO,ID_ESTADO'))
+        ->join('tarifas' , 'estacionados.ID_TARIFA', '=', 'tarifas.ID_TARIFA')
+        ->where('EST_PATENTE',$request['PATENTE_CODVOU'])->where('ID_ESTADO',1)
+        ->first();
+        
+        $fecha = substr( $datosvehiculo -> EST_INGRESO, 0,10);
+        $hora = substr( $datosvehiculo -> EST_INGRESO, 11,5);
+
+        Session::flash('mensaje','Vehiculo Encontrado');
+
+
+        return view('Caja.caja',compact('datosvehiculo','fecha','hora','tarifas'));
+    }
     public function store(Request $request)
     {
         //
@@ -82,7 +102,7 @@ class CajaController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
