@@ -21,14 +21,16 @@ class CreateEstacionadosTable extends Migration
             $table->unsignedInteger("ID_USUARIOINGRESO");
             $table->unsignedInteger("ID_ABONADO")->nullable();
             $table->unsignedInteger("ID_CAJA")->nullable();
-            $table->unsignedInteger("ID_TARIFASALIDA")->nullable();
             $table->string('EST_PATENTE');
             $table->datetime('EST_INGRESO');
             $table->datetime('EST_SALIDA')->nullable();
             $table->integer('COBRO')->nullable();
+            $table->unsignedInteger("ID_TARIFASALIDA")->nullable();
+            $table->string('EST_DURACION')->nullable();
             $table->timestamps();
             $table->foreign('ID_ESTADO')->references('ID_ESTADO')->on('estados');
             $table->foreign('ID_TARIFA')->references('ID_TARIFA')->on('tarifas');
+            $table->foreign('ID_TARIFASALIDA')->references('ID_TARIFA')->on('tarifas');
             $table->foreign('ID_CAJA')->references('ID_CAJA')->on('cajas');
             $table->foreign('ID_USUARIOINGRESO')->references('id')->on('users');
         });

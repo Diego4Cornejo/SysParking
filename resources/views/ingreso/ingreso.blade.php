@@ -46,12 +46,12 @@ function printExternal(url) {
                                 <br>
                                 <div class="form-group">
                                     <h4><label class="">Patente del Vehiculo</label></h4>
-                                    <input class="form-control input-lg" name="EST_PATENTE" maxlength="6" autocomplete="off"  placeholder="Ejemplo: VXDJ02 o vxdj02">
+                                    <input class="form-control input-lg" name="EST_PATENTE" maxlength="6" autocomplete="off"  placeholder="Ejemplo: VXDJ02 o vxdj02" required>
                                 </div>
                                 <div class="form-group">
                                         <h4><label>Tipo de Atención</label></h4>
-                                        <select name="idtarifa" id="idtarifa" type="text" class="form-control input-lg">
-                                            <option>Seleccionar...</option>
+                                        <select name="idtarifa" id="idtarifa" type="text" class="form-control input-lg" required>
+                                            <option value="" selected disabled hidden>Seleccionar..</option>
                                             @forelse ($tarifas as $tarifa)
                                                 <option value="{{$tarifa -> ID_TARIFA}}"name="EST_TIPODEATENCION">{{ $tarifa -> TARIFAS_TIPODEATENCION }}</option>
                                             @empty
@@ -68,11 +68,11 @@ function printExternal(url) {
                             {!!Form::close([''])!!}
                                 <!-- Mensaje-->
                                 <br>
-                            @if(Session::has('mensaje'))
+                            @if(Session::has('ingresado'))
                             <div  class="alert alert-success alert-dismissable">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 <script> printExternal('voucher');</script>
-                                {{Session::get('mensaje')}}
+                                {{Session::get('ingresado')}}
                             </div>
                             @endif
 <!-- -->

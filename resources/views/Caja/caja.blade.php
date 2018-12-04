@@ -40,7 +40,12 @@
             <div class="panel-body">
                 @if(Session::has('mensaje'))
                 <div class="col-md-6"> 
-                        {{ Form::open(array('method'=>'PUT','route' => ['abonados.update', $datosvehiculo -> ID_ESTACIONADO])) }}
+                        {{ Form::open(array('method'=>'PUT','route' => ['ingreso.update', $datosvehiculo -> ID_ESTACIONADO])) }}
+                        <input type="hidden" value="{{$fechastring}}" name="FECHA_SALIDA" />
+                        <input type="hidden" value="{{ $idcaja}}" name="ID_CAJA" />
+                        <input type="hidden" value="{{ $cobro }}" name="COBRO" />
+                        <input type="hidden" value="{{ $codnuevatarifa }}" name="TARIFANUEVA" />
+                        <input type="hidden" value="{{ $duracion }}" name="DURACION" />
                         <fieldset disabled>
                         <div class="form-group">
                                 <label>Realizar consulta por  :</label>
@@ -74,7 +79,7 @@
                             <select name="idtarifa" id="idtarifa" type="text" class="form-control input-lg">
                                 <option>Seleccionar...</option>
                                 @forelse ($tarifas as $tarifa)
-                                    <option value="{{$tarifa -> ID_TARIFA}}"name="EST_TIPODEATENCION">{{ $tarifa -> TARIFAS_TIPODEATENCION }}</option>
+                                    <option value="{{$tarifa -> ID_TARIFA}}" name="EST_TIPODEATENCION">{{ $tarifa -> TARIFAS_TIPODEATENCION }}</option>
                                 @empty
         
                                 @endforelse
@@ -83,7 +88,7 @@
                         </fieldset>
                         <div class="form-group text-center">
                             <button class="btn btn-primary input-lg " type="submit"><i class="fa fa-dollar"></i> Generar Cobro </button>
-                            <a href="/caja"><button class="btn btn-success input-lg "><i class="fa fa-search"></i> Volver a Consulta </button></a>
+                            <a href="/caja"><button class="btn btn-success input-lg " type="button"><i class="fa fa-search"></i> Volver a Consulta </button></a>
                         </div>
                         <script type="text/javascript">
         
@@ -105,41 +110,41 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th colspan="2" class="text-center"><h2>Datos Vehiculo</h2></th>
+                                <th colspan="2" class="text-center"><h2>Datos Vehículo</h2></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>  
-                                <td>Patente del Vehiculo o COD: </td>
-                                <td>{{ $datosvehiculo -> EST_PATENTE }}</td>
+                                <td>Patente del Vehículo o COD: </td>
+                                <td class="text-center">{{ $datosvehiculo -> EST_PATENTE }}</td>
                             </tr>
                             <tr>  
                                 <td> Hora de Ingreso: </td>
-                            <td>{{ $horaingreso }}</td>
+                            <td class="text-center">{{ $horaingreso }}</td>
                             </tr>
                             <tr>  
                                 <td> Fecha de Ingreso: </td>
-                                <td> {{ $fechaingreso }} </td>
+                                <td class="text-center"> {{ $fechaingreso }} </td>
                             </tr>
                             <tr>  
                                 <td> Hora de Salida: </td>
-                                <td>{{ $horasalida }}</td>
+                                <td class="text-center">{{ $horasalida }}</td>
                                 </tr>
                                 <tr>  
                                     <td> Fecha de Salida: </td>
-                                    <td> {{ $fechasalida }} </td>
+                                    <td class="text-center"> {{ $fechasalida }} </td>
                                 </tr>
                             <tr>  
                                 <td> Tipo de Ingreso: </td>
-                                <td> {{ $datosvehiculo -> TARIFAS_TIPODEATENCION }} </td>
+                                <td class="text-center"> {{ $tipodeingreso}} </td>
                             </tr>
                             <tr>  
                                     <td> Duracion de estadia Efectiva:</td>
-                                    <td> {{ $duracion }} Minutos </td>
+                                    <td class="text-center"> {{ $duracion }} Minutos </td>
                                 </tr>
                             <tr>  
-                                <td><h4> Cobro: </h4></td>
-                                <td></td>
+                                <td><h3> Cobro: </h3></td>
+                                <td class="text-center"><h3> $ {{ $cobro }} <h3></td>
                             </tr>
                         </tbody>
                     </table>
@@ -148,6 +153,7 @@
                 <div class="col-md-6"> 
                     {!!Form::open(['action' => 'CajaController@consultar'])!!}
                         
+                        <input type="hidden" value="{{$cajas -> ID_CAJA}}" name="ID_CAJAS" />
                         <div class="form-group">
                                 <label>Realizar consulta por  :</label>
                                 <div class="text-center">
@@ -161,7 +167,7 @@
                             </div>
                         <div class="form-group">
                             <label>Patente o Código de Voucher :</label>
-                            <input class="form-control input-lg text-center" name="PATENTE_CODVOU" maxlength="8" autocomplete="off"  placeholder="">
+                            <input class="form-control input-lg text-center" name="PATENTE_CODVOU" maxlength="8" autocomplete="off"  placeholder="" required>
 
                         </div>
                         <div class="form-group">
@@ -176,7 +182,7 @@
                             </div>
                         </div>
                         <div class="form-group" id="ifYes" style="display:none">
-                            <label>Tipo de Atención</label>
+                            <label>Seleccionar nuevo tipo de Atención</label>
                             <select name="idtarifa" id="idtarifa" type="text" class="form-control input-lg">
                                 <option>Seleccionar...</option>
                                 @forelse ($tarifas as $tarifa)
@@ -189,6 +195,20 @@
                         <div class="form-group text-center">
                             <button class="btn btn-success input-lg " type="submit"><i class="fa fa-search"></i> Realizar Busqueda </button>
                         </div>
+                        @if(Session::has('cobrado'))
+                        <div  class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <script> printExternal('voucher');</script>
+                            {{Session::get('cobrado')}}
+                        </div>
+                        @endif
+                        @if(Session::has('error'))
+                        <div  class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <script> printExternal('voucher');</script>
+                            {{Session::get('error')}}
+                        </div>
+                        @endif
                         <script type="text/javascript">
 
                             function yesnoCheck() {
@@ -210,12 +230,12 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th colspan="2" class="text-center"><h2>Datos Vehiculo</h2></th>
+                                <th colspan="2" class="text-center"><h2>Datos Vehículo</h2></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>  
-                                <td>Patente del Vehiculo o COD: </td>
+                                <td>Patente del Vehículo o COD: </td>
                                 <td> </td>
                             </tr>
                             <tr>  

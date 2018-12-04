@@ -15,12 +15,16 @@ class ChartsController extends Controller
      */
     public function index()
     {
+        $ventas = DB::table('estacionados')->sum('COBRO');
+
+
         $entradas = DB::table('estacionados')
         ->select(DB::raw('tarifas.TARIFAS_TIPODEATENCION , COUNT(tarifas.TARIFAS_TIPODEATENCION) as VECES'))
         ->join('tarifas' , 'estacionados.ID_TARIFA', '=', 'tarifas.ID_TARIFA')
         ->groupBy('tarifas.TARIFAS_TIPODEATENCION')
         ->get();
-        return view('graficos.graficos',compact('entradas'));
+
+        return view('graficos.graficos',compact('entradas','ventas'));
     }
     public function pdf()
     {        

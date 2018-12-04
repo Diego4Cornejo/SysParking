@@ -17,6 +17,8 @@ class Estacionado extends Model
         'EST_SALIDA',
         'COBRO',
         'ID_TARIFA',
+        'ID_TARIFASALIDA',
+        'EST_DURACION',
         'EST_CODIGOBOUCHER',
         'ID_USUARIOINGRESO',
         'ID_ESTADO'

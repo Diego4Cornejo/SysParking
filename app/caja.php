@@ -14,6 +14,7 @@ class caja extends Model
         'CAJA_FECHACIERRE',
         'CAJA_MONTOINICIAL',
         'CAJA_MONTOFINAL',
+        'CAJA_ESTADO'
     ];
     protected $guarded = ["ID_CAJA"];
     protected $primaryKey = "ID_CAJA";

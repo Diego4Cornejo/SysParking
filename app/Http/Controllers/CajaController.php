@@ -31,16 +31,15 @@ class CajaController extends Controller
         else{
 
         $cajas = DB::table('cajas')
-        ->select(DB::raw('CAJA_FECHACIERRE'))
+        ->select(DB::raw('ID_CAJA,CAJA_FECHACIERRE'))
         ->orderBy('ID_CAJA', 'desc')
         ->first();
-       
        /* var_dump($cajas ->CAJA_FECHACIERRE);
         dd($cajas ->CAJA_FECHACIERRE); */
         
         if ($cajas->CAJA_FECHACIERRE == NULL) {
             Session::forget('mensaje');
-            return view('Caja.caja',compact('tarifas'));
+            return view('Caja.caja',compact('tarifas','cajas'));
 
         } else {
             return view('Caja.aperturadecaja');
@@ -66,29 +65,45 @@ class CajaController extends Controller
      */
     public function consultar(Request $request)
     {
-        $patentecod = $request['PATENTE_CODVOU'];    
+        $patentecod = $request['PATENTE_CODVOU'];  
+        $idcaja = $request['ID_CAJAS']; 
 
         if($request['consultapor'] == "Voucher"){
             $patente = substr( $request['PATENTE_CODVOU'] , 2, 6);
+            $conteovehiculos = DB::table('estacionados')->where('EST_PATENTE',$patente)->where('ID_ESTADO',1)->count();
+            if($conteovehiculos > 0){
+            dd($conteovehiculos);
             $tarifas = tarifa::all();
             $datosvehiculo = DB::table('estacionados')
-            ->select(DB::raw('ID_ESTACIONADO,EST_CODIGOBOUCHER,EST_PATENTE,tarifas.TARIFAS_TIPODEATENCION,tarifas.TARIFAS_CODIGO,EST_INGRESO,ID_ESTADO'))
+            ->select(DB::raw('ID_ESTACIONADO,EST_CODIGOBOUCHER,EST_PATENTE,tarifas.TARIFAS_TIPODEATENCION,tarifas.ID_TARIFA,tarifas.TARIFAS_CODIGO,EST_INGRESO,ID_ESTADO'))
             ->join('tarifas' , 'estacionados.ID_TARIFA', '=', 'tarifas.ID_TARIFA')
-            ->where('EST_PATENTE',$patente)->where('ID_ESTADO',1)->where('ID_ESTADO',1)
+            ->where('EST_PATENTE',$patente)->where('ID_ESTADO',1)
             ->first();
             $voucher = "checked";
             $patente = "";
+            }
+            else{
+                Session::flash('error','No hay registros con ese voucher');
+                return redirect('/caja');
+            }
         }
         elseif ($request['consultapor'] == "Patente") {
             $patente = substr( $request['PATENTE_CODVOU'] , 0, 6);
+            $conteovehiculos = DB::table('estacionados')->where('EST_PATENTE',$patente)->where('ID_ESTADO',1)->count();
+            if($conteovehiculos > 0){
             $tarifas = tarifa::all();
             $datosvehiculo = DB::table('estacionados')
-            ->select(DB::raw('ID_ESTACIONADO,EST_CODIGOBOUCHER,EST_PATENTE,tarifas.TARIFAS_TIPODEATENCION,tarifas.TARIFAS_CODIGO,EST_INGRESO,ID_ESTADO'))
+            ->select(DB::raw('ID_ESTACIONADO,EST_CODIGOBOUCHER,EST_PATENTE,tarifas.TARIFAS_TIPODEATENCION,tarifas.ID_TARIFA,tarifas.TARIFAS_CODIGO,EST_INGRESO,ID_ESTADO'))
             ->join('tarifas' , 'estacionados.ID_TARIFA', '=', 'tarifas.ID_TARIFA')
-            ->where('EST_PATENTE',$patente)->where('ID_ESTADO',1)->where('ID_ESTADO',1)
+            ->where('EST_PATENTE',$patente)->where('ID_ESTADO',1)
             ->first();
             $voucher = "";
             $patente = "checked";
+            }
+            else{
+                Session::flash('error','No hay registros con esa patente');
+                return redirect('/caja');
+            }
         }
         $fecha = strtotime($datosvehiculo-> EST_INGRESO);
         $fechaingreso = substr( $datosvehiculo -> EST_INGRESO, 0,10);
@@ -97,7 +112,7 @@ class CajaController extends Controller
         $fechastring = date("Y-m-d H:i:s");
         $fechasalida = substr( $fechastring , 0,10);
         $horasalida = substr( $fechastring , 11,5);
-
+        $tipodeingreso = $datosvehiculo -> TARIFAS_TIPODEATENCION;
         $duracion = (round(($fechasalidacompleto - $fecha) / 60.2)) - 5.0;
        // $duracion = round(abs($fechasalidacompleto - $fecha) / 60). " minutos";
 
@@ -105,27 +120,99 @@ class CajaController extends Controller
         dd($fecha,$datosvehiculo -> EST_INGRESO,$duracion);*/
 
         if($request['Documentos'] == "Si"){
-            if( $datosvehiculo -> TARIFAS_CODIGO == "AT001"){
 
+            $codnuevatarifa = $datosvehiculo -> ID_TARIFA;
+            if( $datosvehiculo -> TARIFAS_CODIGO == "AT001"){
+                if($duracion < 35 && $duracion > 0){
+                    $cobro = ($duracion * 20);
+                }
+                elseif($duracion > 35){
+
+                    $cobro = 700;
+                }
+                else{
+                    $cobro = "Aun no cumple el tiempo minimo ";
+                    $duracion = 0;
+                }
 
             }
             elseif( $datosvehiculo -> TARIFAS_CODIGO == "AT002" ){
+                if($duracion <= 0){
+                    $cobro = "Aun no cumple el tiempo minimo";
+                    $duracion = 0;
+                }
+                else{
+                $cobro = ($duracion * 20);
+                }
 
             }
             elseif( $datosvehiculo -> TARIFAS_CODIGO == "AT003" ){
-
+                $cobro = 0;
             }
             elseif( $datosvehiculo -> TARIFAS_CODIGO == "AT004" ){
-
+                if($duracion <= 0){
+                    $cobro = "Aun no cumple el tiempo minimo";
+                    $duracion = 0;
+                }
+                else{
+                $cobro = ($duracion * 20);
+                }
             }
 
         }
+        else{
 
+            $codnuevatarifa = $request['idtarifa'];
+            $nuevatarifa = DB::table('tarifas')
+            ->select(DB::raw('TARIFAS_CODIGO,TARIFAS_TIPODEATENCION'))
+            ->where('ID_TARIFA',$codnuevatarifa)
+            ->first();
+            $tipodeingreso = $nuevatarifa -> TARIFAS_TIPODEATENCION;
+
+            if( $nuevatarifa -> TARIFAS_CODIGO == "AT001"){
+                if($duracion < 35 && $duracion > 0){
+                    $cobro = ($duracion * 20);
+                }
+                elseif($duracion > 35){
+
+                    $cobro = 700;
+                }
+                else{
+                    $cobro = "Aun no cumple el tiempo minimo ";
+                    $duracion = 0;
+                }
+
+            }
+            elseif( $nuevatarifa -> TARIFAS_CODIGO == "AT002" ){
+                if($duracion <= 0){
+                    $cobro = "Aun no cumple el tiempo minimo";
+                    $duracion = 0;
+                }
+                else{
+                $cobro = ($duracion * 20);
+                }
+
+            }
+            elseif( $nuevatarifa -> TARIFAS_CODIGO == "AT003" ){
+                $cobro = 0;
+            }
+            elseif( $nuevatarifa -> TARIFAS_CODIGO == "AT004" ){
+                if($duracion <= 0){
+                    $cobro = "Aun no cumple el tiempo minimo";
+                    $duracion = 0;
+                }
+                else{
+                $cobro = ($duracion * 20);
+                }
+            }
+        }
+
+        
 
         Session::flash('mensaje','Vehiculo Encontrado');
 
 
-        return view('Caja.caja',compact('datosvehiculo','fechaingreso','horaingreso','fechasalida','duracion','horasalida','tarifas','patentecod','voucher','patente'));
+        return view('Caja.caja',compact('datosvehiculo','fechaingreso','tipodeingreso','horaingreso','fechastring','fechasalida','duracion','horasalida','tarifas','patentecod','voucher','patente','cobro','idcaja','codnuevatarifa'));
     }
     public function store(Request $request)
     {
@@ -133,7 +220,8 @@ class CajaController extends Controller
         caja::create([
             'ID_USUARIO' => Auth::user()->id,
             'CAJA_FECHAAPERTURA' => date("Y-m-d H:i:s"),
-            'CAJA_MONTOINICIAL' => $request['MONTO_APERTURA']
+            'CAJA_MONTOINICIAL' => $request['MONTO_APERTURA'],
+            'CAJA_ESTADO' => "Abierta"
         ]);
         Session::flash('mensaje','Vehiculo Registrado Correctamente');
         

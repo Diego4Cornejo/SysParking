@@ -48,7 +48,7 @@ class EstacionadosController extends Controller
             'ID_ESTADO' => 1,
             'EST_INGRESO' => date("Y-m-d H:i:s")
         ]);
-        Session::flash('mensaje','Vehiculo Registrado Correctamente');
+        Session::flash('ingresado','Vehiculo Registrado Correctamente');
         
         return redirect('/ingreso');
     }
@@ -61,7 +61,30 @@ class EstacionadosController extends Controller
     }
     public function update(Request $request, $id)
     {
-        //
+        if($request['COBRO'] == "Aun no cumple el tiempo minimo"){
+
+            $estacionados= Estacionado::find($id);
+            $estacionados->ID_ESTADO=2;
+            $estacionados->ID_CAJA=$request->get('ID_CAJA');
+            $estacionados->EST_SALIDA=$request->get('FECHA_SALIDA');
+            $estacionados->COBRO=0;
+            $estacionados->ID_TARIFASALIDA=$request->get('TARIFANUEVA');
+            $estacionados->EST_DURACION=$request->get('DURACION');
+
+        }else{
+        $estacionados= Estacionado::find($id);
+        $estacionados->ID_ESTADO=2;
+        $estacionados->ID_CAJA=$request->get('ID_CAJA');
+        $estacionados->EST_SALIDA=$request->get('FECHA_SALIDA');
+        $estacionados->COBRO=$request->get('COBRO');
+        $estacionados->ID_TARIFASALIDA=$request->get('TARIFANUEVA');
+        $estacionados->EST_DURACION=$request->get('DURACION');
+        }
+        
+
+        $estacionados->save();
+        Session::flash('cobrado','Cobro Realizado Correctamente');
+        return redirect('/caja');
     }
     public function destroy($id)
     {

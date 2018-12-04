@@ -38,9 +38,13 @@ class HomeController extends Controller
         $operadores = DB::table('users')
         ->select(DB::raw('count(*) as operadores'))
         ->get();
+        
+        $cambios = DB::table('estacionados')->where('ID_TARIFASALIDA','<>','ID_TARIFA')->where('ID_ESTADO',2)->count();
+
+
 
         /** dd($estacionados -> estacionados); */
         // return view('Layouts.inicio');
-        return view('/home' ,compact('estacionados','operadores','abonados'));
+        return view('/home' ,compact('estacionados','operadores','abonados','cambios'));
     }
 }
