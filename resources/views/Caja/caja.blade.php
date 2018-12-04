@@ -41,20 +41,21 @@
                 @if(Session::has('mensaje'))
                 <div class="col-md-6"> 
                         {{ Form::open(array('method'=>'PUT','route' => ['abonados.update', $datosvehiculo -> ID_ESTACIONADO])) }}
+                        <fieldset disabled>
                         <div class="form-group">
                                 <label>Realizar consulta por  :</label>
                                 <div class="text-center">
                                 <label class="radio-inline input-lg">
-                                    <input type="radio" name="consultapor" id="optionsRadiosInline1" value="Voucher" checked> Voucher
+                                    <input type="radio" name="consultapor" id="optionsRadiosInline1" value="Voucher" {{ $voucher }}> Voucher
                                 </label>
                                 <label class="radio-inline input-lg">
-                                    <input type="radio" name="consultapor" id="optionsRadiosInline2" value="Patente"> Patente
+                                    <input type="radio" name="consultapor" id="optionsRadiosInline2" value="Patente" {{ $patente }}> Patente
                                 </label>
                                 </div>
                             </div>
                         <div class="form-group">
                             <label>Patente o Código de Voucher :</label>
-                            <input class="form-control input-lg text-center" name="PATENTE_CODVOU" maxlength="6" autocomplete="off"  placeholder="">
+                        <input class="form-control input-lg text-center" name="PATENTE_CODVOU" maxlength="8" autocomplete="off"  placeholder="{{ $patentecod }}">
         
                         </div>
                         <div class="form-group">
@@ -69,7 +70,7 @@
                             </div>
                         </div>
                         <div class="form-group" id="ifYes" style="display:none">
-                            <label>Tipo de Atención</label>
+                            <label>Seleccionar nuevo tipo de Atención: </label>
                             <select name="idtarifa" id="idtarifa" type="text" class="form-control input-lg">
                                 <option>Seleccionar...</option>
                                 @forelse ($tarifas as $tarifa)
@@ -79,8 +80,10 @@
                                 @endforelse
                             </select>
                         </div>
+                        </fieldset>
                         <div class="form-group text-center">
-                            <button class="btn btn-success input-lg " type="submit"><i class="fa fa-search"></i> Realizar Busqueda </button>
+                            <button class="btn btn-primary input-lg " type="submit"><i class="fa fa-dollar"></i> Generar Cobro </button>
+                            <a href="/caja"><button class="btn btn-success input-lg "><i class="fa fa-search"></i> Volver a Consulta </button></a>
                         </div>
                         <script type="text/javascript">
         
@@ -112,19 +115,27 @@
                             </tr>
                             <tr>  
                                 <td> Hora de Ingreso: </td>
-                            <td>{{ $hora }}</td>
+                            <td>{{ $horaingreso }}</td>
                             </tr>
                             <tr>  
                                 <td> Fecha de Ingreso: </td>
-                                <td> {{ $fecha }} </td>
+                                <td> {{ $fechaingreso }} </td>
                             </tr>
+                            <tr>  
+                                <td> Hora de Salida: </td>
+                                <td>{{ $horasalida }}</td>
+                                </tr>
+                                <tr>  
+                                    <td> Fecha de Salida: </td>
+                                    <td> {{ $fechasalida }} </td>
+                                </tr>
                             <tr>  
                                 <td> Tipo de Ingreso: </td>
                                 <td> {{ $datosvehiculo -> TARIFAS_TIPODEATENCION }} </td>
                             </tr>
                             <tr>  
-                                    <td> Duracion de estadia:</td>
-                                    <td></td>
+                                    <td> Duracion de estadia Efectiva:</td>
+                                    <td> {{ $duracion }} Minutos </td>
                                 </tr>
                             <tr>  
                                 <td><h4> Cobro: </h4></td>
@@ -150,7 +161,7 @@
                             </div>
                         <div class="form-group">
                             <label>Patente o Código de Voucher :</label>
-                            <input class="form-control input-lg text-center" name="PATENTE_CODVOU" maxlength="6" autocomplete="off"  placeholder="">
+                            <input class="form-control input-lg text-center" name="PATENTE_CODVOU" maxlength="8" autocomplete="off"  placeholder="">
 
                         </div>
                         <div class="form-group">

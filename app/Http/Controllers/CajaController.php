@@ -66,20 +66,66 @@ class CajaController extends Controller
      */
     public function consultar(Request $request)
     {
-        $tarifas = tarifa::all();
-        $datosvehiculo = DB::table('estacionados')
-        ->select(DB::raw('ID_ESTACIONADO,EST_CODIGOBOUCHER,EST_PATENTE,tarifas.TARIFAS_TIPODEATENCION,EST_INGRESO,ID_ESTADO'))
-        ->join('tarifas' , 'estacionados.ID_TARIFA', '=', 'tarifas.ID_TARIFA')
-        ->where('EST_PATENTE',$request['PATENTE_CODVOU'])->where('ID_ESTADO',1)
-        ->first();
-        
-        $fecha = substr( $datosvehiculo -> EST_INGRESO, 0,10);
-        $hora = substr( $datosvehiculo -> EST_INGRESO, 11,5);
+        $patentecod = $request['PATENTE_CODVOU'];    
+
+        if($request['consultapor'] == "Voucher"){
+            $patente = substr( $request['PATENTE_CODVOU'] , 2, 6);
+            $tarifas = tarifa::all();
+            $datosvehiculo = DB::table('estacionados')
+            ->select(DB::raw('ID_ESTACIONADO,EST_CODIGOBOUCHER,EST_PATENTE,tarifas.TARIFAS_TIPODEATENCION,tarifas.TARIFAS_CODIGO,EST_INGRESO,ID_ESTADO'))
+            ->join('tarifas' , 'estacionados.ID_TARIFA', '=', 'tarifas.ID_TARIFA')
+            ->where('EST_PATENTE',$patente)->where('ID_ESTADO',1)->where('ID_ESTADO',1)
+            ->first();
+            $voucher = "checked";
+            $patente = "";
+        }
+        elseif ($request['consultapor'] == "Patente") {
+            $patente = substr( $request['PATENTE_CODVOU'] , 0, 6);
+            $tarifas = tarifa::all();
+            $datosvehiculo = DB::table('estacionados')
+            ->select(DB::raw('ID_ESTACIONADO,EST_CODIGOBOUCHER,EST_PATENTE,tarifas.TARIFAS_TIPODEATENCION,tarifas.TARIFAS_CODIGO,EST_INGRESO,ID_ESTADO'))
+            ->join('tarifas' , 'estacionados.ID_TARIFA', '=', 'tarifas.ID_TARIFA')
+            ->where('EST_PATENTE',$patente)->where('ID_ESTADO',1)->where('ID_ESTADO',1)
+            ->first();
+            $voucher = "";
+            $patente = "checked";
+        }
+        $fecha = strtotime($datosvehiculo-> EST_INGRESO);
+        $fechaingreso = substr( $datosvehiculo -> EST_INGRESO, 0,10);
+        $horaingreso = substr( $datosvehiculo -> EST_INGRESO, 11,5);
+        $fechasalidacompleto = strtotime(date("Y-m-d H:i:s"));
+        $fechastring = date("Y-m-d H:i:s");
+        $fechasalida = substr( $fechastring , 0,10);
+        $horasalida = substr( $fechastring , 11,5);
+
+        $duracion = (round(($fechasalidacompleto - $fecha) / 60.2)) - 5.0;
+       // $duracion = round(abs($fechasalidacompleto - $fecha) / 60). " minutos";
+
+        /*var_dump($fecha,$datosvehiculo -> EST_INGRESO,$duracion);
+        dd($fecha,$datosvehiculo -> EST_INGRESO,$duracion);*/
+
+        if($request['Documentos'] == "Si"){
+            if( $datosvehiculo -> TARIFAS_CODIGO == "AT001"){
+
+
+            }
+            elseif( $datosvehiculo -> TARIFAS_CODIGO == "AT002" ){
+
+            }
+            elseif( $datosvehiculo -> TARIFAS_CODIGO == "AT003" ){
+
+            }
+            elseif( $datosvehiculo -> TARIFAS_CODIGO == "AT004" ){
+
+            }
+
+        }
+
 
         Session::flash('mensaje','Vehiculo Encontrado');
 
 
-        return view('Caja.caja',compact('datosvehiculo','fecha','hora','tarifas'));
+        return view('Caja.caja',compact('datosvehiculo','fechaingreso','horaingreso','fechasalida','duracion','horasalida','tarifas','patentecod','voucher','patente'));
     }
     public function store(Request $request)
     {
