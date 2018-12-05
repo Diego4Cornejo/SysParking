@@ -22,16 +22,16 @@
                             <br>
                             <div class="form-group">
                                 <label>Nombre Completo :</label>
-                            <input class="form-control" name="AB_NOMBRE" placeholder="{{ $datoabonado -> AB_NOMBRE}}">
+                            <input class="form-control" name="AB_NOMBRE" placeholder="{{ $datoabonado -> AB_NOMBRE}}" required>
                             </div>
                             <div class="form-group">
                                     <label>Rut :</label>
-                                    <input class="form-control" name="AB_RUT" placeholder="{{ $datoabonado -> AB_RUN}}">
+                                    <input class="form-control" name="AB_RUT" placeholder="{{ $datoabonado -> AB_RUN}}" required>
                             </div>
                             <div class="form-group">
                                     <label>Sexo :</label>
-                                    <select name="AB_SEXO" id="AB_SEXO" type="text" class="form-control">
-                                        <option value="0">Seleccionar..</option>
+                                    <select name="AB_SEXO" id="AB_SEXO" type="text" class="form-control" required>
+                                            <option value="" selected disabled hidden>Seleccionar..</option>
                                         <option value="Masculino">Masculino</option>
                                         <option value="Femenino">Femenino</option>
                                         <option value="Otro">Otro</option>
@@ -39,23 +39,23 @@
                             </div>
                             <div class="form-group">
                                     <label>Correo Electronico :</label>
-                                    <input name="AB_CORREO" class="form-control" placeholder="{{ $datoabonado -> AB_CORREO}}">
+                                    <input name="AB_CORREO" class="form-control" placeholder="{{ $datoabonado -> AB_CORREO}}"required>
                             </div>
                             <div class="form-group">
                                     <label>Numero Telefonico :</label>
-                                    <input name="AB_NUMERO" class="form-control" placeholder="{{ $datoabonado -> AB_NUMERODETELEFONO}}">
+                                    <input name="AB_NUMERO" class="form-control" placeholder="{{ $datoabonado -> AB_NUMERODETELEFONO}}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <br>
                             <div class="form-group">
                                     <label>Patente del Vehiculo :</label>
-                                    <input class="form-control" name="AB_PATENTE" maxlength="6" autocomplete="off"  placeholder="{{ $datoabonado -> AB_PATENTE}}">
+                                    <input class="form-control" name="AB_PATENTE" maxlength="6" autocomplete="off"  placeholder="{{ $datoabonado -> AB_PATENTE}}" required>
                             </div>
                             <div class="form-group">
                                     <label>Tipo de Plan :</label>
-                                    <select name="idplan" id="idplan" type="text" class="form-control">
-                                        <option>Seleccionar...</option>
+                                    <select name="idplan" id="idplan" type="text" class="form-control" required>
+                                        <option value="" selected disabled hidden>Seleccionar..</option>
                                         @forelse ($planes as $plan)
                                             <option value="{{$plan -> ID_PLAN}}"name="EST_TIPODEATENCION">{{ $plan -> PLAN_NOMBRE }}  ${{ $plan -> PLAN_PRECIO }} </option>
                                         @empty

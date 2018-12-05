@@ -32,9 +32,11 @@ Route::resource('graficos', "ChartsController");
 Route::resource('listadeabonados', "ListadeabonadosController");
 Route::resource('listadeoperadores', "OperadoresController");
 Route::resource('voucher', "voucherController");
+
 Route::post('consultar', 'CajaController@consultar');
 Route::get('pdf', "ChartsController@pdf");
 Route::get('abonado/{id}/edit', ['as' => 'id', 'uses' => 'AbonadosController@edit']);
+Route::get('caja/{id}/edit', ['as' => 'id', 'uses' => 'CajaController@edit']);
 Route::get('abonado/{id}/delete', ['as' => 'id', 'uses' => 'AbonadosController@destroy']);
 
 

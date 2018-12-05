@@ -21,16 +21,16 @@
                             <br>
                             <div class="form-group">
                                 <label>Nombre Completo :</label>
-                                <input class="form-control" name="AB_NOMBRE" placeholder="">
+                                <input class="form-control" name="AB_NOMBRE" placeholder="" required>
                             </div>
                             <div class="form-group">
                                     <label>Rut :</label>
-                                    <input class="form-control" name="AB_RUT" placeholder="">
+                                    <input class="form-control" name="AB_RUT" placeholder="" required>
                             </div>
                             <div class="form-group">
                                     <label>Sexo :</label>
-                                    <select name="AB_SEXO" id="AB_SEXO" type="text" class="form-control">
-                                        <option value="0">Seleccionar..</option>
+                                    <select name="AB_SEXO" id="AB_SEXO" type="text" class="form-control" required>
+                                            <option value="" selected disabled hidden>Seleccionar..</option>
                                         <option value="Masculino">Masculino</option>
                                         <option value="Femenino">Femenino</option>
                                         <option value="Otro">Otro</option>
@@ -38,23 +38,23 @@
                             </div>
                             <div class="form-group">
                                     <label>Correo Electronico :</label>
-                                    <input name="AB_CORREO" class="form-control" placeholder="">
+                                    <input name="AB_CORREO" class="form-control" placeholder="" required>
                             </div>
                             <div class="form-group">
                                     <label>Numero Telefonico :</label>
-                                    <input name="AB_NUMERO" class="form-control" placeholder="">
+                                    <input name="AB_NUMERO" class="form-control" placeholder="" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <br>
                             <div class="form-group">
                                     <label>Patente del Vehiculo :</label>
-                                    <input class="form-control" name="AB_PATENTE" maxlength="6" autocomplete="off"  placeholder="">
+                                    <input class="form-control" name="AB_PATENTE" maxlength="6" autocomplete="off"  placeholder="" required>
                             </div>
                             <div class="form-group">
                                     <label>Tipo de Plan :</label>
-                                    <select name="idplan" id="idplan" type="text" class="form-control">
-                                        <option>Seleccionar...</option>
+                                    <select name="idplan" id="idplan" type="text" class="form-control" required>
+                                        <option value="" selected disabled hidden>Seleccionar..</option>
                                         @forelse ($planes as $plan)
                                             <option value="{{$plan -> ID_PLAN}}"name="EST_TIPODEATENCION">{{ $plan -> PLAN_NOMBRE }}  ${{ $plan -> PLAN_PRECIO }} </option>
                                         @empty
@@ -66,7 +66,7 @@
                             <fieldset disabled>
                                     <div class="form-group">
                                         <label for="disabledSelect">Precio:</label>
-                                        <input class="form-control" id="disabledInput" type="text" placeholder="" disabled>
+                                        <input class="form-control" id="disabledInput" type="text" placeholder="" >
                                     </div>
                                     <div class="form-group">
                                             <label>Caracteristicas:</label>

@@ -19,7 +19,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <a href="{{ url('/cierredecaja') }}"><button type="button" class="btn btn-danger">Si</button></a>
+                        <a href="{{  url('/caja/' . $idcaja . '/edit') }}"><button type="button" class="btn btn-danger">Si</button></a>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -76,8 +76,8 @@
                         </div>
                         <div class="form-group" id="ifYes" style="display:none">
                             <label>Seleccionar nuevo tipo de Atención: </label>
-                            <select name="idtarifa" id="idtarifa" type="text" class="form-control input-lg">
-                                <option>Seleccionar...</option>
+                            <select name="idtarifa" id="idtarifa" type="text" class="form-control input-lg" required>
+                                    <option value="" selected disabled hidden>Seleccionar..</option>
                                 @forelse ($tarifas as $tarifa)
                                     <option value="{{$tarifa -> ID_TARIFA}}" name="EST_TIPODEATENCION">{{ $tarifa -> TARIFAS_TIPODEATENCION }}</option>
                                 @empty
@@ -88,7 +88,7 @@
                         </fieldset>
                         <div class="form-group text-center">
                             <button class="btn btn-primary input-lg " type="submit"><i class="fa fa-dollar"></i> Generar Cobro </button>
-                            <a href="/caja"><button class="btn btn-success input-lg " type="button"><i class="fa fa-search"></i> Volver a Consulta </button></a>
+                            <a href="caja"><button class="btn btn-success input-lg " type="button"><i class="fa fa-search"></i> Volver a Consulta </button></a>
                         </div>
                         <script type="text/javascript">
         

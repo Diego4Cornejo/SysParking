@@ -34,12 +34,14 @@ class CajaController extends Controller
         ->select(DB::raw('ID_CAJA,CAJA_FECHACIERRE'))
         ->orderBy('ID_CAJA', 'desc')
         ->first();
+
+        $idcaja = $cajas->ID_CAJA; 
        /* var_dump($cajas ->CAJA_FECHACIERRE);
         dd($cajas ->CAJA_FECHACIERRE); */
         
         if ($cajas->CAJA_FECHACIERRE == NULL) {
             Session::forget('mensaje');
-            return view('Caja.caja',compact('tarifas','cajas'));
+            return view('Caja.caja',compact('tarifas','cajas','idcaja'));
 
         } else {
             return view('Caja.aperturadecaja');
@@ -65,6 +67,7 @@ class CajaController extends Controller
      */
     public function consultar(Request $request)
     {
+        
         $patentecod = $request['PATENTE_CODVOU'];  
         $idcaja = $request['ID_CAJAS']; 
 
@@ -248,6 +251,13 @@ class CajaController extends Controller
     public function edit($id)
     {
         //
+        $caja = Caja::find($id);
+        $fecha = substr( $caja -> CAJA_FECHAAPERTURA, 0,10);
+        $hora = substr( $caja -> CAJA_FECHAAPERTURA, 11,5);
+        $montoinicial = $caja -> CAJA_MONTOINICIAL;
+
+        $montocalculado = (DB::table('estacionados')->where('ID_CAJA',$id)->sum('COBRO'))+$montoinicial;
+        return view('caja.cierredecaja',compact('caja','id','fecha','hora','montoinicial','montocalculado'));
         
     }
 
@@ -261,6 +271,14 @@ class CajaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $caja= Caja::find($id);
+        $caja->CAJA_FECHACIERRE=$request->get('FECHA_CIERRE');
+        $caja->CAJA_MONTOFINAL=$request->get('MONTO_CIERRE');
+        $caja->CAJA_ESTADO="Cerrada";
+
+        $caja->save();
+        Session::flash('cerrada','Cierre de Caja Realizado Correctamente');
+        return redirect('/caja');
     }
 
     /**

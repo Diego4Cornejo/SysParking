@@ -26,25 +26,34 @@
                                     </div>
                                     <div class="form-group">
                                             <label for="disabledSelect">Fecha :</label>
-                                            <input class="form-control" id="disabledInput" type="text" placeholder="{{ date('d-m-Y') }}" disabled>
+                                            <input class="form-control" id="disabledInput" type="text" placeholder="{{ date('d-m-Y') }} " disabled>
                                     </div>
                                     <div class="form-group">
                                             <label for="disabledSelect">Hora :</label>
                                             <input class="form-control" id="disabledInput" type="text" placeholder="{{ date('H:i') }}" disabled>
                                     </div>
                         </fieldset> 
-                        <label>Monto Inicial de apertura:</label>
+                        <label>Monto de cierre apertura:</label>
                         <div class="form-group input-group">
                                 
                                 <span class="input-group-addon">$</span>
-                                <input type="text" name="MONTO_APERTURA" class="form-control">
+                                <input type="number" name="MONTO_APERTURA" class="form-control" required>
                         </div>
                      </div>
                      <div class="text-center">
                      <button type="submit" class="btn btn-success btn-lg" >Abrir Caja  </button>
                      </div>
                  {!!Form::close([''])!!}
+                     <br>
+                 @if(Session::has('cerrada'))
+                 <div  class="alert alert-success alert-dismissable">
+                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                     <script> printExternal('voucher');</script>
+                     {{Session::get('cerrada')}}
+                 </div>
+                 @endif
                 </div>
+
             </div>
             <!-- /.panel-body -->
         </div>

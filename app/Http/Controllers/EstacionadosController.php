@@ -30,7 +30,9 @@ class EstacionadosController extends Controller
     {
         
     }
-
+    public function consultar(Request $request){
+        
+    }
     public function store(Request $request)
     {
        /* $patente = $request->input('EST_PATENTE');
